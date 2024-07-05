@@ -1,0 +1,64 @@
+<div class="main-container" *ngIf="!authService.isLoggedIn()">
+  <ion-text class="courses-list-title font-largeTitle">Courses</ion-text>
+  <ion-img src="assets/course_rive/spline.svg" class="bg-spline" alt="Spline background for blur effect"></ion-img>
+
+  <canvas riv="shapes" class="rive-bg" [width]="platform.width()" [height]="platform.height()" *ngIf="showRiveAsset">
+    <riv-animation name="Animation 1" play></riv-animation>
+  </canvas>
+
+  <!-- Main Content -->
+  <div #container class="content-container">
+    <div class="courses-list">
+      <div class="course-container" *ngFor="let course of courses;let last = last" [style.--course-bg]="course.color">
+        <ion-img class="course-img" [src]="course.image"></ion-img>
+
+        <ion-text class="course-title font-title2">{{title}}</ion-text>
+        <ion-text class="course-subtitle font-subtitle">
+          {{title}}
+        </ion-text>
+        <ion-text class="course-caption font-footnote2">
+          {{randJobArea}}
+          <div class="title">
+            <ion-text>{{title}}</ion-text>
+          </div>
+          <div class="subtitle font-body">
+            <ion-text>
+              {{textRange20}}
+            </ion-text>
+          </div>
+        </ion-text>
+      <div class="spacer" *ngIf="last"></div>
+      <ion-text class="footer-text font-footnote">
+         {{last ? textRange20 : textRange100}}
+      </ion-text>
+      <ion-buttons class="startCoursebtn" (click)="startCoursePressed()" *ngIf="last">
+        <div class="contained shadow"></div>
+        <canvas class="contained" riv="button" width="236" height="64">
+          <riv-player name="active" [(play)]="buttonToggle" autoreset mode="one-shot" *ngIf="showRiveAsset"></riv-player>
+        </canvas>
+        <div class="contained btnContent">
+          <ion-icon class="arrow" name="arrow-forward-outline"></ion-icon>
+          <ion-text>Login</ion-text>
+        </div>
+      </ion-buttons>
+        <ion-row class="avatar-container" *ngIf="!last">
+          <ion-img *ngFor="let number of [1, 2, 3]; let i = index;"
+            [style.transform]="'translateX(calc(' + i + ' * -20px))'"
+            src="assets/course_rive/avatars/avatar_{{number}}.svg"></ion-img>
+        </ion-row>
+      </div>
+    </div>
+  </div>
+
+  <!-- <ion-button #closeBtn class="close-btn" (click)="onCloseOnBoarding()">
+    <ion-icon name="close-outline"></ion-icon>
+  </ion-button> -->
+
+  <ion-modal #modal backdropDismiss="false" [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
+    <ng-template>
+      <div class="ion-page">
+        <cr-sign-in (onClose)="onSignInClose()"></cr-sign-in>
+      </div>
+    </ng-template>
+  </ion-modal>
+</div>
