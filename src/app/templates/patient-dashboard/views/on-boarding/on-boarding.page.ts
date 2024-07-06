@@ -66,7 +66,7 @@ if (this.authService.isLoggedIn()) {
   onSignInClose() {
     this.signInModal?.dismiss();
     if (localStorage.getItem('type') === 'patient') {
-    this.route.navigateByUrl('/patient-view')
+    this.route.navigateByUrl('/patient-dashboard')
     } else {
     this.route.navigateByUrl('/dashboard')
 

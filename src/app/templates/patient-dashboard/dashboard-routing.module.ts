@@ -24,10 +24,10 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'patient-view',
+    path: 'games',
     loadChildren: () =>
-      import('./views/content-view/content-view.module').then(
-        (m) => m.ContentViewPageModule
+      import('./views/game-view/game-view-routing.module').then(
+        (m) => m.GameViewRoutingModule
       ),
   },
 ];

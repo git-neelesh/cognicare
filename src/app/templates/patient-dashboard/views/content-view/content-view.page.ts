@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Demo, courseSectionsList, demoList } from '../../models/demo-list';
 import { randColor, randHex, randUser,randProductDescription, randSoonDate  } from '@ngneat/falso';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-content-view',
@@ -9,11 +10,26 @@ import { randColor, randHex, randUser,randProductDescription, randSoonDate  } fr
 })
 export class ContentViewPage implements OnInit {
   courses = demoList;
-  courseSections = randUser({length:10});
+  courseSections = [{
+    title: 'Games',
+    caption: '4 Games',
+    color: '#9CC5FF',
+    image: 'assets/course_rive/game.png',
+  },{
+    title: 'Music',
+    caption: '10 Music list',
+    color: '#6E6AE8',
+    image: 'assets/course_rive/music.png',
+  },{
+    title: 'Gallery',
+    caption: '15 photos',
+    color: '#005FE7',
+    image: 'assets/course_rive/image-gallery.png',
+  }];
   color = ['#7676ab', '#059ab4', '#f03d81', '#064167', '#7b8b49', '#0aade4', '#0ffe0e', '#008d99', '#925fb1', '#445269']
   desc = randProductDescription({ length: 10 })
   dateInfo = randSoonDate()
-  constructor() {
+  constructor(private route: Router) {
     console.log(randUser({length:10}), randHex({length:10}))
   }
 
@@ -25,5 +41,8 @@ export class ContentViewPage implements OnInit {
 
   trackAvatarItems(_i: number, num: number) {
     return `avatar_${num}`;
+  }
+  goto() {
+    this.route.navigateByUrl('/patient-dashboard/games')
   }
 }

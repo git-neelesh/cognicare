@@ -8,7 +8,8 @@
   <base href="/" />
 
   <meta name="color-scheme" content="light dark" />
-  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport"
+    content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="msapplication-tap-highlight" content="no" />
 
@@ -17,6 +18,159 @@
   <!-- add to homescreen for ios -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <style>
+    /* Styling for the input box */
+    .myInput {
+      padding: 10px;
+      font-size: 1.2em;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      margin-top: 20px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .myInput:focus {
+      border-color: #6E6AE8;
+      box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+      outline: none;
+    }
+
+    /* Styling for the button */
+    button.nextBtn {
+      padding: 10px 20px;
+      font-size: 1.2em;
+      color: white;
+      background-color: #6E6AE8;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    button.nextBtn:hover {
+      background-color: #0056b3;
+      box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+    }
+
+    /* Styling for the output area */
+    output {
+      font-size: 2em;
+      margin-top: 20px;
+      color: #333;
+      text-align: center;
+    }
+
+    .scoreBoard {
+      color: white;
+      background-color: rgba(103, 146, 255);
+      padding: 25px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 1.5em;
+      width: 80%;
+      max-width: 500px;
+    }
+
+    /* game 2 */
+    .hangman {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .score {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      padding: 5px;
+      background: #28a745;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    button.hangman {
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button.hangman:hover {
+      background-color: #218838;
+    }
+
+    .secret words {
+      font-size: 1.5em;
+      margin: 20px 0;
+    }
+
+    .letters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .letters-flex {
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+      gap: 10px;
+    }
+
+    .box,
+    .boxD {
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1.2em;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    .box:hover {
+      background-color: #f0f0f0;
+      border-color: #bbb;
+    }
+
+    .boxD {
+      background-color: #ddd;
+      border-color: #ccc;
+      cursor: default;
+    }
+
+    .boxE {
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1.2em;
+    }
+
+    .boxE[data-letter=" "] {
+      border-color: white;
+      background-color: white;
+    }
+  </style>
 </head>
 
 <body>

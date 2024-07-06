@@ -29,7 +29,7 @@
 
   <ion-text class="recent-title font-title3">Recent</ion-text>
   <!-- Recent course Section -->
-  <div class="section-list" style="display: none;">
+  <div class="section-list">
     <ion-grid class="section-grid">
       <ion-row>
         <ion-col
@@ -37,15 +37,16 @@
           size-lg="6"
           size="12"
         >
-          <ion-row class="section-container" [style.background]="color[i]">
+          <ion-row class="section-container" [style.background]="section.color"
+          (click)="goto()">
             <ion-col>
-              <ion-text class="font-title2">{{section.firstName}}</ion-text>
+              <ion-text class="font-title2">{{section.title}}</ion-text>
               <br />
               <div class="spacing"></div>
-              <ion-text class="font-body">{{section.phone}}</ion-text>
+              <ion-text class="font-body">{{section.caption}}</ion-text>
             </ion-col>
             <ion-col size="auto" class="ion-align-items-center">
-              <ion-img class="section-img" [src]="section.img"></ion-img>
+              <ion-img class="section-img" [src]="section.image"></ion-img>
             </ion-col>
           </ion-row>
         </ion-col>

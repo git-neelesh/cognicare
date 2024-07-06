@@ -12,6 +12,7 @@ import { BottomTabBarComponent } from './navigation/bottom-tab-bar/bottom-tab-ba
 import { OnBoardingPageModule } from './views/on-boarding/on-boarding.module';
 import { ContentViewPageModule } from './views/content-view/content-view.module';
 import { MenuRowComponent } from './navigation/side-menu/menu-row/menu-row.component';
+import { GameViewModule } from './views/game-view/game-view.module';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { MenuRowComponent } from './navigation/side-menu/menu-row/menu-row.compo
     DashboardPageRoutingModule,
     OnBoardingPageModule,
     ContentViewPageModule,
+    GameViewModule
   ],
   declarations: [
     DashboardPage,
