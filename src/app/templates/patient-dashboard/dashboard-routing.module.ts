@@ -30,6 +30,20 @@ const routes: Routes = [
         (m) => m.GameViewRoutingModule
       ),
   },
+  {
+    path: 'music',
+    loadChildren: () =>
+      import('./views/music-view/music-view-routing.module').then(
+        (m) => m.MusicViewRoutingModule
+      ),
+  },
+  {
+    path: 'gallery',
+    loadChildren: () =>
+      import('./views/gallery-view/gallery-view-routing.module').then(
+        (m) => m.GalleryViewRoutingModule
+      ),
+  },
 ];
 
 @NgModule({
