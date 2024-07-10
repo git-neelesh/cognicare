@@ -1,9 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
-import { AnimationController } from '@ionic/angular';
+import { AnimationController, ModalController } from '@ionic/angular';
 import { tabItemsList } from './models/tabs';
 import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
+import { ChatbotComponent } from 'src/app/chatbot/chatbot.component';
 
 @Component({
   selector: 'app-course-rive',
@@ -30,7 +31,8 @@ export class DashboardPage implements OnInit {
   isLoggedIn: boolean = false
   constructor(public animationCtrl: AnimationController,
     private authService:AuthService,
-  private route: Router) {}
+  private route: Router,
+  private modalController: ModalController) {}
 
   ngOnInit(): void {
     // Temporary solution to fix the rive asset loading issue causing "Binding Error",
@@ -43,6 +45,17 @@ export class DashboardPage implements OnInit {
     } else {
       this.route.navigateByUrl('/on-boarding')
     }
+  }
+
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: ChatbotComponent,
+      cssClass: 'my-custom-class' // Optional CSS class for custom styling
+    });
+    modal.onDidDismiss().then(data=>{
+      this.selectedTab = data.data.data;
+    })
+    return await modal.present();
   }
 
   showOnBoardingToggle() {
@@ -90,6 +103,12 @@ export class DashboardPage implements OnInit {
       allAnim.play();
     } else {
       allAnim.direction('reverse').play();
+    }
+  }
+
+  tabChange(event: any) {
+    if (event.artboard === 'CHAT') {
+    this.openModal();
     }
   }
 

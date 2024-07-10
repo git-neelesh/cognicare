@@ -13,6 +13,7 @@ import { OnBoardingPageModule } from './views/on-boarding/on-boarding.module';
 import { ContentViewPageModule } from './views/content-view/content-view.module';
 import { MenuRowComponent } from './navigation/side-menu/menu-row/menu-row.component';
 import { GameViewModule } from './views/game-view/game-view.module';
+import { ChatbotComponent } from 'src/app/chatbot/chatbot.component';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { GameViewModule } from './views/game-view/game-view.module';
     SideMenuComponent,
     MenuRowComponent,
     BottomTabBarComponent,
+    ChatbotComponent
   ],
 })
 export class DashboardPageModule {}
