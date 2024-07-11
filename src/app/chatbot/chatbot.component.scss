@@ -1,0 +1,126 @@
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    /* To display messages from bottom to top */
+    padding: 10px;
+    background-color: #EDEDED;
+}
+
+ion-item.bot {
+    align-self: flex-start;
+    background-color: #e8f5e9;
+    border-radius: 4px;
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+}
+
+.chatbot-content {
+    --background: #EDEDED;
+    background: var(--background);
+    height: 100%;
+    /* Adjust height as needed */
+    padding: 20px;
+    /* Adjust padding as needed */
+    color: #fff;
+    /* Text color on top of the background image */
+}
+
+.toolbar-style {
+    display: flex;
+}
+
+ion-input {
+    --padding-start: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 8px;
+}
+
+ion-input:focus {
+    --background: #bbdefb;
+}
+
+ion-item.user {
+    align-self: flex-end;
+    background-color: #fff3e0;
+    border-radius: 4px;
+    color: #092e3d;
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+}
+
+.message-text {
+    font-size: 16px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+}
+
+ion-input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+ion-button {
+    min-width: 80px;
+}
+
+ion-item {
+    --min-height: 28px;
+}
+
+ion-item.bot {
+    --background: #e8f5e9;
+}
+
+ion-item.user {
+    --background: #fff3e0;
+}
+
+ion-label {
+    margin: 0;
+}
+
+ion-footer {
+    ion-toolbar {
+        display: flex;
+        align-items: center;
+        /* Center items vertically */
+        justify-content: space-between;
+        /* Distribute items evenly along the main axis */
+        padding: 10px;
+        /* Optional padding */
+        background-color: #f0f0f0;
+        /* Optional background color */
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+ion-icon {
+    font-size: 24px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+ion-button {
+    min-width: 47px;
+    height: 44px;
+    margin-bottom: 0px;
+    margin-top: 0;
+    --background: #bbdefb;
+}
