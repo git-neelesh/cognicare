@@ -23,9 +23,17 @@
       </div>
     </ion-card-content>
   </ion-card>
+
+  <!-- Map section -->
+  <ion-card>
+    <div style> 
+      <div id="map" class="map"></div>
+      <p class="live-location">Live Location</p>
+    </div>
+  </ion-card>
 </ion-content>
 
-<ion-row class="section-container" style="height: 75px; margin-top: 20px;" (click)="backToDashboard()"
+<ion-row class="section-container" style="height: 75px; margin: 20px;" (click)="backToDashboard()"
   [style.background]="'#676a5d'">
   <ion-col>
     <ion-icon class="arrow" name="arrow-back-outline"></ion-icon>
