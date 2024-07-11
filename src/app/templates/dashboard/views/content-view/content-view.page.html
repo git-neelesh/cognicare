@@ -37,7 +37,7 @@
     <ion-grid class="section-grid">
       <ion-row>
         <ion-col
-          *ngFor="let section of courseSections; trackBy: trackCourses;let i=index"
+          *ngFor="let section of courseSections; trackBy: trackCourses;let i=index"  (click)="openPatientDetails(section)"
           size-lg="6"
           size="12"
         >
