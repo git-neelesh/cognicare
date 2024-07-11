@@ -23,6 +23,13 @@ const routes: Routes = [
         (m) => m.DashboardPageModule
       ),
   },
+  {
+    path: 'family-dashboard',
+    loadChildren: () =>
+      import('./templates/patient-dashboard/dashboard.module').then(
+        (m) => m.DashboardPageModule
+      ),
+  },
 ];
 
 @NgModule({

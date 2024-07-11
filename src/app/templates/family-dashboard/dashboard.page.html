@@ -2,7 +2,7 @@
 <div class="screen-background"></div>
 
 <!-- Side Menu -->
-<cr-side-menu #sideMenu></cr-side-menu>
+<!-- <cr-side-menu #sideMenu></cr-side-menu> -->
 
 <!-- <cr-on-boarding
   #onBoarding
@@ -12,6 +12,9 @@
 <ion-content #mainContent>
   <div class="home-tab-container" [hidden]="selectedTab.id !== tabItems[0].id">
     <app-content-view></app-content-view>
+  </div>
+
+  <div class="home-tab-container" [hidden]="selectedTab.id !== tabItems[1].id" (click)="openModal()">
   </div>
 
   <div
@@ -24,12 +27,12 @@
   </div>
 </ion-content>
 
-<div #onBoardingBtn class="on-boarding-btn" >
-  <ion-img class="section-img" [src]="img" style="width: 60px;height: 60px;justify-content: end;"></ion-img>
-</div>
+<!-- <div #onBoardingBtn class="on-boarding-btn" (click)="showOnBoardingToggle()">
+  <ion-icon name="person-outline"></ion-icon>
+</div> -->
 
 <!-- Menu button -->
-<canvas
+<!-- <canvas
   #menuToggleBtn
   class="side-menu-button"
   riv="menu_button"
@@ -41,7 +44,7 @@
   <riv-state-machine name="State Machine" play>
     <riv-input name="isOpen" [value]="isMenuOpen"></riv-input>
   </riv-state-machine>
-</canvas>
+</canvas> -->
 
 <!-- White background behind tab bar that partially shows the tab content -->
 <div #tabWhiteBg class="tabs-white-underlay"></div>
@@ -51,6 +54,6 @@
   #bottomTabs
   style="z-index: 2"
   [selectedTab]="selectedTab"
-  (onTabChange)="selectedTab = $event"
+  (onTabChange)="selectedTab = $event; tabChange($event)"
 ></cr-bottom-tab-bar>
 </ng-container>

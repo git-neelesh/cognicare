@@ -29,6 +29,7 @@ export class DashboardPage implements OnInit {
   showRiveMenuBtn = false; // Temporary
   avatarArr = [1, 2, 3];
   isLoggedIn: boolean = false
+  img = 'assets/mm_logo1.PNG'
   constructor(public animationCtrl: AnimationController,
     private authService:AuthService,
   private route: Router,
