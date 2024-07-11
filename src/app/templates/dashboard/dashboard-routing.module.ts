@@ -22,6 +22,12 @@ const routes: Routes = [
       import('./views/content-view/content-view.module').then(
         (m) => m.ContentViewPageModule
       ),
+  },
+  {
+    path: 'patient-details/:id',
+    loadChildren:() => import('./views/user-details/user-details.module').then(
+      (m) => m.UserDetailsPageModule
+    )
   }
 ];
 
