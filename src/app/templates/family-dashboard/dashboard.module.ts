@@ -32,7 +32,6 @@ import { ChatbotComponent } from 'src/app/chatbot/chatbot.component';
     SideMenuComponent,
     MenuRowComponent,
     BottomTabBarComponent,
-    ChatbotComponent
   ],
 })
 export class DashboardPageModule {}

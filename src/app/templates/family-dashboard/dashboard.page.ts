@@ -4,7 +4,6 @@ import { AnimationController, ModalController } from '@ionic/angular';
 import { tabItemsList } from './models/tabs';
 import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
-import { ChatbotComponent } from 'src/app/chatbot/chatbot.component';
 
 @Component({
   selector: 'app-course-rive',
@@ -48,14 +47,7 @@ export class DashboardPage implements OnInit {
   }
 
   async openModal() {
-    const modal = await this.modalController.create({
-      component: ChatbotComponent,
-      cssClass: 'my-custom-class' // Optional CSS class for custom styling
-    });
-    modal.onDidDismiss().then(data=>{
-      this.selectedTab = data.data.data;
-    })
-    return await modal.present();
+    console.log('call')
   }
 
   showOnBoardingToggle() {
