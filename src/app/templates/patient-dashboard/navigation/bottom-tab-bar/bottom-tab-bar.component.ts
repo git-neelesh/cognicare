@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { BottomTabItem, tabItemsList } from '../../models/tabs';
 
 @Component({
@@ -6,12 +6,18 @@ import { BottomTabItem, tabItemsList } from '../../models/tabs';
   templateUrl: './bottom-tab-bar.component.html',
   styleUrls: ['./bottom-tab-bar.component.scss'],
 })
-export class BottomTabBarComponent implements OnInit {
+export class BottomTabBarComponent implements OnInit, OnChanges {
   tabItems = tabItemsList;
   @Input() selectedTab: BottomTabItem = this.tabItems[0];
   @Output() onTabChange = new EventEmitter<BottomTabItem>();
 
   constructor() {}
+
+  ngOnChanges(changes: SimpleChanges){
+   if(changes){
+
+   }
+  }
 
   ngOnInit() {
     // Temporary solution to fix the rive asset loading issue causing "Binding Error",

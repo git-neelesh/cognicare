@@ -14,6 +14,9 @@
     <app-content-view></app-content-view>
   </div>
 
+  <div class="home-tab-container" [hidden]="selectedTab.id !== tabItems[1].id" (click)="openModal()">
+  </div>
+
   <div
     class="other-tabs"
     [ngStyle]="{ display: selectedTab.id === tabItems[0].id ? 'none' : 'flex' }"
@@ -51,6 +54,6 @@
   #bottomTabs
   style="z-index: 2"
   [selectedTab]="selectedTab"
-  (onTabChange)="selectedTab = $event"
+  (onTabChange)="selectedTab = $event; tabChange($event)"
 ></cr-bottom-tab-bar>
 </ng-container>

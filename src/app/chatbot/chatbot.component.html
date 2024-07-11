@@ -1,0 +1,33 @@
+<!-- <div class="chatbot-container"> -->
+  <ion-header>
+    <ion-toolbar>
+      <div class="toolbar-style">
+        <ion-button (click)="close()">
+          <ion-icon name="chevron-back" size="large" style="color: aliceblue;"></ion-icon>
+        </ion-button>
+        <ion-title>Chatbot</ion-title>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content scrollEvents="true" class="chatbot-content">
+    <ion-list lines="none" id="chat-container">
+      <ion-item *ngFor="let message of messages" [class]="message.from">
+        <ion-label *ngIf="message.from === 'user'" class="ion-text-wrap user-message">{{ message.text }}</ion-label>
+        <ion-label *ngIf="message.from === 'bot'" class="ion-text-wrap bot-message">{{ message.text }}</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-footer>
+      <ion-toolbar>
+        <div class="toolbar-style"> 
+        <ion-input type="text" [(ngModel)]="userMessage" placeholder="Type your message..." (keypress)="onKeyPress($event)"></ion-input>
+        <ion-button (click)="startSpeechToText()">
+          <ion-icon slot="end" name="mic"></ion-icon>
+        </ion-button>
+        <ion-button (click)="sendMessage()"><ion-icon slot="end" name="paper-plane"></ion-icon></ion-button>
+      </div>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-content>
+<!-- </div> -->
