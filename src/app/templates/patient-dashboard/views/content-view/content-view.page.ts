@@ -36,9 +36,13 @@ export class ContentViewPage implements OnInit {
   dateInfo = randSoonDate()
   constructor(private route: Router) {
     console.log(randUser({length:10}), randHex({length:10}))
+
   }
 
-  ngOnInit() {}
+  async ngOnInit() {
+
+
+  }
 
   trackCourses(i: number, course: any) {
     return `${course.title}_${i}`;
