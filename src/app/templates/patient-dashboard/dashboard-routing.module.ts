@@ -33,8 +33,8 @@ const routes: Routes = [
   {
     path: 'music',
     loadChildren: () =>
-      import('./views/music-view/music-view-routing.module').then(
-        (m) => m.MusicViewRoutingModule
+      import('./views/music-view/music-view.module').then(
+        (m) => m.MusicViewModule
       ),
   },
   {

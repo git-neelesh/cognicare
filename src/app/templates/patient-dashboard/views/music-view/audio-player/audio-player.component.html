@@ -1,0 +1,23 @@
+<div *ngFor="let source of sources; let i = index">
+  <audio #player [src]="source.src">
+  </audio>
+
+  <ion-toolbar color="primary" padding>
+    <div class="ion-text-center">
+      <ion-button (click)="play(i)" size="large" fill="clear" color="light">
+        <ng-container *ngIf="isLoading[i]; else loaded">Loading</ng-container>
+
+        <ng-template #loaded>
+          <!-- <ion-icon [name]="isPlaying[i] ? 'pause' : 'play'">
+                    </ion-icon> -->
+          {{ isPlaying[i] ? 'pause' : 'play' }}
+        </ng-template>
+      </ion-button>
+    </div>
+
+    <ion-range min="0" [max]="duration[i]" [value]="currentTime[i]" (ionChange)="seek($event, i)" color="light">
+      <ion-label color="light" slot="start">{{ currentTime[i] }}</ion-label>
+      <ion-label color="light" slot="end">{{ duration[i] }}</ion-label>
+    </ion-range>
+  </ion-toolbar>
+</div>
