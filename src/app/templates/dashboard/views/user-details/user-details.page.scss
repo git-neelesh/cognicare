@@ -21,6 +21,19 @@
     }
   }
 
+  .map {
+    margin: 10px;
+    height: 200px; 
+
+    ::ng-deep .ol-viewport {
+      border-radius: 5px;
+    }
+  }
+
+  .live-location{
+    margin: 10px;
+  }
+
 .custom-card {
     color: white;
   .card-content-container {
