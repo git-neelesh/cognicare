@@ -1,11 +1,13 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.templates',
+  appId: 'com.example.app',
   appName: 'ionic_ui_templates',
-  webDir: 'www',
-  server: {
-    androidScheme: 'https'
+  webDir: 'src',
+  plugins: {
+    "Camera": {
+      "sync": true
+    }
   }
 };
 

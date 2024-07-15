@@ -44,6 +44,10 @@ const routes: Routes = [
         (m) => m.GalleryViewRoutingModule
       ),
   },
+  {
+    path: 'camera',
+    loadChildren: () => import('./views/camera/camera.module').then( m => m.CameraPageModule)
+  }
 ];
 
 @NgModule({

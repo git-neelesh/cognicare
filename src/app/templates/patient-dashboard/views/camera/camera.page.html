@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Camera</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Camera</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
+
+<ion-content>
+  <ion-button (click)="takePicture()">Take Picture</ion-button>
+  <img *ngIf="imageSrc" [src]="imageSrc" />
+</ion-content>

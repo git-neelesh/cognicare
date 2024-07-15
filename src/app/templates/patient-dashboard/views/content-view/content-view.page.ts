@@ -29,8 +29,15 @@ export class ContentViewPage implements OnInit {
     color: '#005FE7',
     image: 'assets/course_rive/image-gallery.png',
     route:'gallery'
-
-  }];
+  },
+  {
+    title: 'Camera',
+    caption: 'Do you know them?',
+    color: '#925fb1',
+    image: 'assets/course_rive/image-gallery.png',
+    route:'camera'
+  }
+];
   color = ['#7676ab', '#059ab4', '#f03d81', '#064167', '#7b8b49', '#0aade4', '#0ffe0e', '#008d99', '#925fb1', '#445269']
   desc = randProductDescription({ length: 10 })
   dateInfo = randSoonDate()
