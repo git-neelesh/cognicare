@@ -5,7 +5,8 @@ import { tabItemsList } from './models/tabs';
 import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
 import { ChatbotComponent } from 'src/app/chatbot/chatbot.component';
-
+import { Geolocation } from '@capacitor/geolocation';
+import { Socket } from 'ngx-socket-io';
 @Component({
   selector: 'app-course-rive',
   templateUrl: './dashboard.page.html',
@@ -30,12 +31,14 @@ export class DashboardPage implements OnInit {
   avatarArr = [1, 2, 3];
   isLoggedIn: boolean = false
   img = 'assets/mm_logo1.PNG'
-  constructor(public animationCtrl: AnimationController,
+  constructor(
     private authService:AuthService,
+    private socket: Socket,
   private route: Router,
   private modalController: ModalController) {}
 
   ngOnInit(): void {
+    this.socket.connect();
     // Temporary solution to fix the rive asset loading issue causing "Binding Error",
     // which fails for most if rendered together, so This will load them all with a delay,
     setTimeout(() => (this.showRiveMenuBtn = true), 1000);
@@ -46,6 +49,7 @@ export class DashboardPage implements OnInit {
     } else {
       this.route.navigateByUrl('/on-boarding')
     }
+     this.sendGeoLocation();
   }
 
   async openModal() {
@@ -63,8 +67,8 @@ export class DashboardPage implements OnInit {
     this.showOnBoarding = !this.showOnBoarding;
 
     // calculated space based on screen scale (0.92) + 20px to show home behind modal
-    const transformBottom = 'calc(((100vh - (100vh * 0.92)) / 2) + 20px)';
-    const onBoardingAnim = this.animationCtrl
+    //const transformBottom = 'calc(((100vh - (100vh * 0.92)) / 2) + 20px)';
+  /*   const onBoardingAnim = this.animationCtrl
       .create()
       .addElement(this.onBoardingRef?.nativeElement)
       .fromTo(
@@ -72,9 +76,9 @@ export class DashboardPage implements OnInit {
         // Here 40px is extra shadow area to avoid it being shown when modal is closed
         `translateY(calc(-1 * (100vh + ${transformBottom} + 40px)))`,
         `translateY(calc(-1 * ${transformBottom}))`
-      );
+      ); */
 
-    const contentViewAnim = this.animationCtrl
+    /* const contentViewAnim = this.animationCtrl
       .create()
       .addElement(this.mainContentRef?.nativeElement)
       .fromTo('transform', 'none', 'scale(0.92)');
@@ -99,12 +103,12 @@ export class DashboardPage implements OnInit {
         bottomTabAnim,
         tabWhiteBgAnim,
       ]);
-
-    if (this.showOnBoarding) {
+ */
+   /*  if (this.showOnBoarding) {
       allAnim.play();
     } else {
       allAnim.direction('reverse').play();
-    }
+    } */
   }
 
   tabChange(event: any) {
@@ -118,7 +122,7 @@ export class DashboardPage implements OnInit {
       style: this.isMenuOpen ? Style.Dark : Style.Light,
     }).catch(() => {});
 
-    const contentViewAnim = this.animationCtrl
+    /* const contentViewAnim = this.animationCtrl
       .create()
       .addElement(this.mainContentRef?.nativeElement)
       .fromTo(
@@ -126,9 +130,9 @@ export class DashboardPage implements OnInit {
         'none',
         // perspective value reference: https://stackoverflow.com/a/56711034
         'scale(0.9) perspective(calc(720px + (100vw - 320px) * 7)) translateX(288px) rotateY(-30deg)'
-      );
+      ); */
 
-    const menuBtnAnim = this.animationCtrl
+    /* const menuBtnAnim = this.animationCtrl
       .create()
       .addElement(this.menuToggleBtnRef?.nativeElement)
       .fromTo('transform', 'none', 'translateX(216px)');
@@ -167,14 +171,45 @@ export class DashboardPage implements OnInit {
         bottomTabAnim,
         onBoardingBtnAnim,
         tabWhiteBgAnim,
-      ]);
+      ]); */
 
-    if (this.isMenuOpen) {
-      allAnim.play();
-    } else {
-      allAnim.direction('reverse').play();
-    }
+    // if (this.isMenuOpen) {
+    //   allAnim.play();
+    // } else {
+    //   allAnim.direction('reverse').play();
+    // }
 
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  async sendGeoLocation() {
+    console.log('try location')
+    try {
+
+      const permissionStatus = await Geolocation.checkPermissions();
+      if(permissionStatus?.location !== 'granted') {
+        const requestStatus = await Geolocation.requestPermissions();
+        if(requestStatus.location !== 'granted') {
+          console.log('Not granted');
+          return;
+        }
+
+        let options: PositionOptions = {
+          maximumAge: 8000,
+          timeout: 1000,
+          enableHighAccuracy: true
+        }
+        await Geolocation.watchPosition(options, (value)=> {
+          console.log(value);
+          this.socket.emit('geolocation', value);
+        });
+        
+      }
+
+    } catch(exception) {
+      console.log("exception")
+    }
+
+
   }
 }

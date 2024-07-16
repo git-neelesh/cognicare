@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {  NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -15,6 +15,11 @@ import { MenuRowComponent } from './navigation/side-menu/menu-row/menu-row.compo
 import { GameViewModule } from './views/game-view/game-view.module';
 import { GalleryViewModule } from './views/gallery-view/gallery-view.module';
 import { ChatbotComponent } from 'src/app/chatbot/chatbot.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+let socketIoConfig: SocketIoConfig = {
+  url: 'http://localhost:3000'
+}; 
 
 @NgModule({
   imports: [
@@ -25,14 +30,14 @@ import { ChatbotComponent } from 'src/app/chatbot/chatbot.component';
     OnBoardingPageModule,
     ContentViewPageModule,
     GameViewModule,
-    GalleryViewModule
+    GalleryViewModule,
+    SocketIoModule.forRoot(socketIoConfig)
   ],
   declarations: [
     DashboardPage,
-    SideMenuComponent,
     MenuRowComponent,
     BottomTabBarComponent,
     ChatbotComponent
-  ],
+  ]
 })
 export class DashboardPageModule {}
