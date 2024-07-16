@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
 import { BottomTabItem, tabItemsList } from '../templates/patient-dashboard/models/tabs';
 
-
+declare var webkitSpeechRecognition;
 @Component({
   selector: 'app-chatbot',
   templateUrl: './chatbot.component.html',
@@ -18,6 +18,7 @@ export class ChatbotComponent implements OnInit{
   // proJectId = '489077677635';
   // dialogflowUrl: string = `https://dialogflow.googleapis.com/v2/projects/${this.apiKey}/agent/sessions/${this.projectId}:detectIntent`;
   isListening = false;
+  results: any;
 
   constructor(private http: HttpClient, private modalController: ModalController) {
     
@@ -61,16 +62,32 @@ export class ChatbotComponent implements OnInit{
   async startSpeechToText() {
     // Logic to start speech-to-text functionality
     console.log('Starting speech-to-text...');
-    // Implement your speech-to-text functionality here
-    // this.isListening = true;
-    // try {
-    //   const spokenText = await this.speechRecognitionService.startListening();
-    //   this.messages.push({ text: spokenText, from: 'user' });
-    //   // Process the spokenText and interact with your chatbot logic here
-    // } catch (error) {
-    //   console.error('Speech recognition error:', error);
-    // }
+
+    if ('webkitSpeechRecognition' in window) {
+      const vSearch = new webkitSpeechRecognition();
+      vSearch.continuous = false;
+      vSearch.interimresults = false;
+      vSearch.lang = 'en-US';
+      vSearch.start();
+      vSearch.onresult = (e) => {
+        console.log(e);
+        this.results = e.results[0][0].transcript;
+        this.getResult();
+        vSearch.stop();
+      };
+    } else {
+      alert('Your browser does not support voice recognition!');
+    }
+
   }
+
+
+  getResult(){
+    console.log(this.results);
+    this.messages.push({from: 'user', text : this.results});
+  }
+
+
   close() {
     this.modalController.dismiss({data:tabItemsList[0]});
   }
