@@ -36,7 +36,7 @@ export default function initializeGame(): void {
     // Game start values
     const name = randAnimalType({length:5})
     console.log(name)
-    const myWords: string[] = name //["hi", "bird", "dog", "cat", "cow"];
+    const myWords: string[] = ["hi", "bird", "dog", "cat", "cow"]; // name
     interface Game {
         sel: string;
         scramble: string;

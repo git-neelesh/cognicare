@@ -30,18 +30,10 @@ export class GameViewComponent implements OnInit {
     },
     {
       title: 'Games',
-      caption: 'Game 3',
+      caption: 'Symbol Match game',
       color: '#8682af',
       image: 'assets/course_rive/game.png',
       id: 'G_3'
-
-    },
-    {
-      title: 'Games',
-      caption: 'Game 4',
-      color: '#9CC5FF',
-      image: 'assets/course_rive/game.png',
-      id: 'G_4'
 
     }
   ]

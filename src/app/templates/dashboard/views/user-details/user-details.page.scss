@@ -1,0 +1,80 @@
+.section-container {
+    height: 110px;
+    color: white;
+    border-radius: 30px;
+    padding: 10px 30px;
+    align-items: center;
+
+    ion-col {
+      --ion-grid-column-padding: 0px;
+    }
+
+    .spacing {
+      height: 8px;
+    }
+
+    .section-img {
+      width: 48px;
+      height: 50px;
+      margin-left: 20px;
+      border-radius: 22px !important;
+    }
+  }
+
+  .map {
+    margin: 10px;
+    height: 200px; 
+
+    ::ng-deep .ol-viewport {
+      border-radius: 5px;
+    }
+  }
+
+  .live-location{
+    margin: 10px;
+  }
+
+.custom-card {
+    color: white;
+  .card-content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  
+    .details {
+      flex: 1;
+      min-width: 200px;
+      margin-left: 26px; 
+    }
+  
+    .image {
+      flex-shrink: 0;
+      img {
+        max-width: 100px;
+        height: auto;
+        border-radius: 50%;
+      }
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .card-content-container {
+      flex-direction: column;
+      align-items: center;
+  
+      .details, .image {
+        margin-right: 0;
+        text-align: center;
+      }
+  
+      .image {
+        margin-top: 16px;
+      }
+    }
+
+    .card-header {
+      text-align: center;
+    }
+  }
+}

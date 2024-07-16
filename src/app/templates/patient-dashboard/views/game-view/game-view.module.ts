@@ -5,11 +5,12 @@ import { GameViewRoutingModule } from './game-view-routing.module';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { GameViewComponent } from './game-view.component';
+import { SymbolMatchGameComponent } from './symbol-match-game/symbol-match-game.component';
 
 
 @NgModule({
-  exports: [GameViewComponent],
-  declarations: [GameViewComponent],
+  exports: [GameViewComponent,SymbolMatchGameComponent],
+  declarations: [GameViewComponent,SymbolMatchGameComponent],
   imports: [
     CommonModule,
     FormsModule,

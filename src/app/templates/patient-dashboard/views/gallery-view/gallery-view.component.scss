@@ -1,0 +1,220 @@
+.courses-list-title {
+  padding: 0px 20px;
+}
+
+.recent-title {
+  padding: 0px 20px;
+}
+
+.courses-list {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 20px;
+  padding-bottom: 30px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .course-container {
+    width: 260px;
+    height: 310px;
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 30px;
+    color: white;
+    background: linear-gradient(to right bottom,
+        rgb(var(--course-bg)),
+        rgba(var(--course-bg), 0.5));
+    box-shadow: 0 12px 8px rgba(var(--course-bg), 0.3),
+      0 1px 2px rgba(var(--course-bg), 0.3);
+
+    .course-img {
+      width: 48px;
+      height: 50px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .course-title {
+      max-width: 170px;
+      margin-bottom: 8px;
+    }
+
+    .course-subtitle {
+      opacity: 0.7;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .course-caption {
+      margin: 8px 0;
+    }
+
+    .spacer {
+      flex: 1;
+    }
+
+    ion-row.avatar-container {
+      ion-img {
+        width: 44px;
+        height: 44px;
+        border-radius: 22px;
+        overflow: hidden;
+      }
+
+      // item spacing
+      ion-img+ion-img {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .course-container+.course-container {
+    margin-left: 20px;
+  }
+}
+
+.section-list {
+  .section-grid {
+    --ion-grid-padding: 10px;
+
+    ion-col {
+      --ion-grid-column-padding: 10px;
+    }
+
+    .section-container {
+      height: 110px;
+      color: white;
+      border-radius: 30px;
+      padding: 10px 30px;
+      align-items: center;
+
+      ion-col {
+        --ion-grid-column-padding: 0px;
+      }
+
+      .spacing {
+        height: 8px;
+      }
+
+      .section-img {
+        width: 48px;
+        height: 50px;
+        margin-left: 20px;
+        border-radius: 22px !important;
+      }
+    }
+  }
+}
+
+ion-img.bg-spline {
+  width: 840px; // x1.5 the original image width dimension (560), just to make it look same as original app
+  align-self: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -50%; // This shift the image to center
+  right: 0;
+  margin: auto;
+  filter: blur(40px);
+  transform: translateX(200px) translateY(100px);
+}
+
+canvas.rive-bg {
+  filter: blur(30px);
+}
+
+.main-container {
+  background: white;
+}
+
+div.content-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  padding-top: calc(var(--safe-area-inset-top) + 80px);
+  padding-bottom: calc(var(--ion-safe-area-bottom) + 40px);
+  overflow-y: scroll;
+
+  .title {
+    max-width: 260px;
+
+    ion-text {
+      color: black;
+      font-size: 37px;
+      font-family: Poppins-Bold;
+    }
+  }
+
+  .subtitle {
+    margin: 16px 0px;
+
+    ion-text {
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  ion-buttons.startCoursebtn {
+    max-width: 236px;
+    max-height: 64px;
+    display: grid;
+    margin: 16px 0px;
+    cursor: pointer;
+
+    // This is just to have all the contents within a dimension, as position absolute wasn't working properly
+    // better approach?
+    .contained {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .shadow {
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      filter: blur(10px);
+      transform: translateY(10px);
+      z-index: -1;
+    }
+
+    .btnContent {
+      color: black;
+      font-weight: 500;
+      text-align: center;
+      align-self: center;
+      justify-content: center;
+      display: flex;
+      transform: translateX(4px) translateY(4px);
+      z-index: 1;
+
+      .arrow {
+        width: 24px;
+        height: 24px;
+      }
+
+      ion-text {
+        align-self: center;
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .footer-text {
+    color: rgba(0, 0, 0, 0.7);
+  }
+}

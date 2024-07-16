@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ patient.firstName }} {{ patient.lastName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card class='custom-card' [ngStyle]="{'background-color': backgroundColor}">
+    <ion-card-header class="card-header">
+      <ion-card-title>{{ patient.username }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="card-content-container">
+        <div class="image">
+          <img [src]="patient.img">
+        </div>
+        <div class="details">
+          <p>Phone: {{ patient.phone }}</p>
+          <p>Email: {{ patient.email }}</p>
+          <p>Address: {{ patient.address.street }}, {{ patient.address.city }}, {{ patient.address.country }}, {{ patient.address.zipCode }}</p>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Map section -->
+  <ion-card>
+    <div style> 
+      <div id="map" class="map"></div>
+      <p class="live-location">Live Location</p>
+    </div>
+  </ion-card>
+</ion-content>
+
+<ion-row class="section-container" style="height: 75px; margin: 20px;" (click)="backToDashboard()"
+  [style.background]="'#676a5d'">
+  <ion-col>
+    <ion-icon class="arrow" name="arrow-back-outline"></ion-icon>
+    <ion-text class="font-title2">Back to Dashboard</ion-text>
+  </ion-col>
+</ion-row>

@@ -12,6 +12,12 @@ import { BottomTabBarComponent } from './navigation/bottom-tab-bar/bottom-tab-ba
 import { OnBoardingPageModule } from './views/on-boarding/on-boarding.module';
 import { ContentViewPageModule } from './views/content-view/content-view.module';
 import { MenuRowComponent } from './navigation/side-menu/menu-row/menu-row.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+let socketIoConfig: SocketIoConfig = {
+  url: 'http://192.168.1.100:3000'
+}; 
+
 
 @NgModule({
   imports: [
@@ -21,12 +27,13 @@ import { MenuRowComponent } from './navigation/side-menu/menu-row/menu-row.compo
     DashboardPageRoutingModule,
     OnBoardingPageModule,
     ContentViewPageModule,
+    SocketIoModule.forRoot(socketIoConfig)
   ],
   declarations: [
     DashboardPage,
     SideMenuComponent,
     MenuRowComponent,
-    BottomTabBarComponent,
+    BottomTabBarComponent
   ],
 })
 export class DashboardPageModule {}

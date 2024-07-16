@@ -1,0 +1,56 @@
+<div class="main-container">
+  <ion-text class="courses-list-title font-largeTitle">Patient Games</ion-text>
+  <ion-img src="assets/course_rive/spline.svg" class="bg-spline" alt="Spline background for blur effect"></ion-img>
+  <canvas riv="shapes" class="rive-bg" [width]="platform.width()" [height]="platform.height()" *ngIf="true">
+    <riv-animation name="Animation 1" play></riv-animation>
+  </canvas>
+  <div class="content-container">
+    <div class="section-list">
+      <ion-grid class="section-grid">
+        <div>
+          <ion-row *ngIf="activeGID === ''; else showSelectedGame">
+            <ion-col *ngFor="let section of gameSections;let i=index;let last=last" size-lg="6" size="12">
+              <ion-row class="section-container" [style.background]="section.color" (click)="activeGame(section.id)">
+                <ion-col>
+                  <ion-text class="font-title2">{{section.title}}</ion-text>
+                  <br />
+                  <div class="spacing"></div>
+                  <ion-text class="font-body">{{section.caption}}</ion-text>
+                </ion-col>
+                <ion-col size="auto" class="ion-align-items-center">
+                  <ion-img class="section-img" [src]="section.image"></ion-img>
+                </ion-col>
+              </ion-row>
+              <ng-container *ngIf="last">
+                <ion-row class="section-container" style="height: 75px; margin-top: 20px;" (click)="location.back()"
+                  [style.background]="'#676a5d'">
+                  <ion-col>
+                    <ion-icon class="arrow" name="arrow-back-outline"></ion-icon>
+                    <ion-text class="font-title2">Back</ion-text>
+                  </ion-col>
+                </ion-row>
+              </ng-container>
+            </ion-col>
+          </ion-row>
+          <ng-template #showSelectedGame>
+            <div>
+              <div class="gameArea" *ngIf="activeGID === 'G_1'"></div>
+              <div class="hangman" *ngIf="activeGID === 'G_2'"></div>
+            </div>
+            <ion-row class="section-container" style="height: 75px; margin-top: 20px;" (click)="activeGID = ''"
+              [style.background]="'#676a5d'">
+              <ion-col>
+                <ion-icon class="arrow" name="arrow-back-outline"></ion-icon>
+                <ion-text class="font-title2">Back to game list</ion-text>
+              </ion-col>
+            </ion-row>
+          </ng-template>
+
+        </div>
+
+      </ion-grid>
+
+    </div>
+  </div>
+
+</div>

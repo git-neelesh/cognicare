@@ -43,7 +43,9 @@ if (this.authService.isLoggedIn()) {
 
      if (localStorage.getItem('type') === 'patient') {
     this.route.navigateByUrl('/patient-dashboard')
-    } else {
+    } else if (localStorage.getItem('type') === 'family') {
+    this.route.navigateByUrl('/family-dashboard')
+    }  else {
     this.route.navigateByUrl('/dashboard')
 
     }
@@ -74,7 +76,9 @@ if (this.authService.isLoggedIn()) {
     console.log(localStorage.getItem('type'), localStorage.getItem('type') === 'patient')
     if (localStorage.getItem('type') === 'patient') {
     this.route.navigateByUrl('/patient-dashboard')
-    } else {
+    } else if (localStorage.getItem('type') === 'family') {
+    this.route.navigateByUrl('/family-dashboard')
+    }  else {
     this.route.navigateByUrl('/dashboard')
 
     }
