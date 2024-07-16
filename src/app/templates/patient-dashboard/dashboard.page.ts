@@ -201,7 +201,7 @@ export class DashboardPage implements OnInit {
         }
         await Geolocation.watchPosition(options, (value)=> {
           console.log(value);
-          this.socket.emit('geolocation', value);
+          this.socket.emit('get-geolocation', value);
         });
         
       }

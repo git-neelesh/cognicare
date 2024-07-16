@@ -18,7 +18,7 @@ import { ChatbotComponent } from 'src/app/chatbot/chatbot.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 let socketIoConfig: SocketIoConfig = {
-  url: 'http://localhost:3000'
+  url: 'http://192.168.1.100:3000'
 }; 
 
 @NgModule({
