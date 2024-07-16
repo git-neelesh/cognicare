@@ -75,3 +75,4 @@ export class AudioPlayerComponent implements OnInit, AfterViewInit {
         });
     }
 }
+
