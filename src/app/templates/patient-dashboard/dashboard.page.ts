@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
-import { AnimationController, ModalController } from '@ionic/angular';
+import {  ModalController } from '@ionic/angular';
 import { tabItemsList } from './models/tabs';
 import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';

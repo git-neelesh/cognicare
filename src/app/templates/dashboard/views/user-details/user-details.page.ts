@@ -1,20 +1,15 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  Renderer2,
+} from '@angular/core';
 import { Router } from '@angular/router';
-import Map from 'ol/Map';
-import View from 'ol/View';
-import TileLayer from 'ol/layer/Tile';
-import XYZ from 'ol/source/XYZ';
-import OSM from 'ol/source/OSM';
-import Point from 'ol/geom/Point';
-import { fromLonLat } from 'ol/proj';
-import Feature from 'ol/Feature';
-import VectorSource from 'ol/source/Vector';
-import VectorLayer from 'ol/layer/Vector';
-import Style from 'ol/style/Style';
-import Icon from 'ol/style/Icon';
-import { defaults as defaultControls, Attribution } from 'ol/control';
 import { Socket } from 'ngx-socket-io';
-
+import { MapService } from 'src/app/templates/services/map.service';
+import { Geolocation } from '@capacitor/geolocation';
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.page.html',
@@ -22,91 +17,174 @@ import { Socket } from 'ngx-socket-io';
 })
 export class UserDetailsPage implements OnInit, AfterViewInit {
   patient: any;
-  colors = ['#7676ab', '#059ab4', '#f03d81', '#064167', '#7b8b49', '#0aade4', '#008d99', '#925fb1', '#445269']
-  backgroundColor = '#7676ab';
-  map!: Map;
+  @ViewChild('map', { static: true }) mapElementRef!: ElementRef;
+  map: any;
+  source = { lat: 18.5285, lng: 73.8744 };
+  destination = { lat: 18.5132, lng: 73.9242 };
+  directionsService: any;
+  directionsDisplay: any;
+  sourceMarker: any;
+  destination_marker: any;
 
-  constructor(private route: Router, private socket: Socket) {
+  constructor(
+    private route: Router,
+    private socket: Socket,
+    private mapService: MapService,
+    private renderer: Renderer2
+  ) {
     const navigation = this.route.getCurrentNavigation();
     if (navigation?.extras?.state) {
       this.patient = navigation.extras.state['patient'];
     }
-   }
+  }
 
   ngOnInit() {
-    this.setBackgroundColor();
-    this.socket.connect();
-    this.getGeoLocation();
+  //  this.socket.connect();
+   // this.getGeoLocation();
+   this.getCurrentGeoLocation();
   }
 
   ngAfterViewInit(): void {
-    this.renderMap([7.999, 4.827]);
+    this.loadMap();
   }
 
-  renderMap(cord = []) {
-    const coordinates =  cord ; //getRandomCoordinates();
-    console.log("abcd", coordinates);
-    const transformedCoordinates = fromLonLat(coordinates);
-    const marker = new Feature({
-      geometry: new Point(transformedCoordinates),
+  async getCurrentGeoLocation() {
+    try {
+      const permissionStatus = await Geolocation.checkPermissions();
+      if(permissionStatus?.location !== 'granted') {
+        const requestStatus = await Geolocation.requestPermissions();
+        if(requestStatus.location !== 'granted') {
+          console.log('Not granted');
+          return;
+        }
+
+        let options: PositionOptions = {
+          maximumAge: 8000,
+          timeout: 30000,
+          enableHighAccuracy: true
+        }
+        await Geolocation.watchPosition(options, (data)=> {
+          const source = { lat: data['coords'].latitude, lng: data['coords'].longitude};
+          this.changeMarkerPositionToNew(source);
+        });
+        
+      }
+    } catch(exception) {
+      console.log("exception")
+    }
+
+  }
+
+  async loadMap() {
+    try {
+      const googleMaps = await this.mapService.loadGoogleMaps();
+      this.map = googleMaps;
+      const mapElement = this.mapElementRef.nativeElement;
+      const location = new googleMaps.LatLng(this.source.lat, this.source.lng);
+      this.map = new googleMaps.Map(mapElement, {
+        center: location,
+        zoom: 12,
+      });
+      this.setAllMapService(googleMaps);
+      const {sourceIconUrl, destinationIconUrl} = this.getTrackerIcons();
+      const {sourcePosition, destinationPosition} = this.getSourceAndDestination(googleMaps);
+      const sourceIcon = this.createMarkerIcons(sourceIconUrl, googleMaps);
+      const destinationIcon = this.createMarkerIcons(destinationIconUrl, googleMaps);
+      this.sourceMarker = this.createMarkers(googleMaps, sourcePosition, sourceIcon);
+      this.destination_marker = this.createMarkers(googleMaps, destinationPosition, destinationIcon);
+      this.setMarkerOnMap();
+      await this.drawMapRoute();
+      this.map.setCenter(sourcePosition);
+      this.renderer.addClass(mapElement, 'visible');
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  
+  setAllMapService(googleMaps) {
+    this.directionsService = new googleMaps.DirectionsService;
+    this.directionsDisplay = new googleMaps.DirectionsRenderer;
+    this.directionsDisplay = new googleMaps.DirectionsRenderer();
+  }
+
+  setMarkerOnMap() {
+    this.sourceMarker.setMap(this.map);
+    this.destination_marker.setMap(this.map);
+    this.directionsDisplay.setMap(this.map);
+    this.directionsDisplay.setOptions({
+      polylineOptions: {
+        strokeWeight: 4,
+        strokeOpacity: 1,
+        strokeColor: 'black'
+      },
+      suppressMarkers: true
     });
-    console.log(marker)
-    const vectorSource = new VectorSource({
-      features: [marker],
+  }
+  getTrackerIcons() {
+    return {
+    sourceIconUrl: 'assets/icon/caretaker.png',
+    destinationIconUrl: 'assets/icon/subject.png'
+    }
+  }
+
+  getSourceAndDestination(googleMaps) {
+    return {
+       sourcePosition: new googleMaps.LatLng(this.source.lat, this.source.lng),
+      destinationPosition: new googleMaps.LatLng(this.destination.lat, this.destination.lng)
+    }
+  }
+
+  createMarkerIcons(url, googleMaps) {
+    return {
+        url: url,
+        scaledSize: new googleMaps.Size(40, 40), // scaled size
+        origin: new googleMaps.Point(0, 0), // origin
+        anchor: new googleMaps.Point(0, 0) // anchor
+    }
+  }
+
+  createMarkers(googleMaps, position, icon) {
+    return new googleMaps.Marker({
+      map: this.map,
+      position: position,
+      animation: googleMaps.Animation.DROP,
+      icon: icon,
     });
+  }
 
-    
-    const vectorLayer = new VectorLayer({
-      source: vectorSource,
-      style: new Style({
-        image: new Icon({
-          src: 'https://openlayers.org/en/latest/examples/data/icon.png',
-          anchor: [0.5, 1],
-        }),
-      }),
-    });
-
-    new Map({
-      target: 'map',
-      layers: [
-        new TileLayer({
-          source: new OSM(),
-        }),
-        vectorLayer,
-      ],
-      view: new View({
-        center: transformedCoordinates,
-        zoom: 14,
-      }),
+  drawMapRoute() {
+    this.directionsService.route({
+      origin: this.source,
+      destination: this.destination,
+      travelMode: 'DRIVING',
+      provideRouteAlternatives: true
+    }, (response, status) => {
+      if (status === 'OK') {
+        this.directionsDisplay.setDirections(response);
+        //console.log('response: ', response);
+        //const directionsData = response.routes[0].legs[0];
+       // console.log(directionsData);
+      //  const duration = directionsData.duration.text;
+       // console.log(duration);
+      } else {
+       // console.log(status);
+      }
     });
   }
-
-
-  setBackgroundColor() {
-    const randomIndex = Math.floor(Math.random() * this.colors.length);
-    this.backgroundColor = this.colors[randomIndex];
+  changeMarkerPositionToNew(data) {
+    const newPosition = { lat: data?.lat, lng: data?.lng }; // Set the new marker position coordinates
+    this.source = {...newPosition};
+    console.log(newPosition);
+    this.sourceMarker.setPosition(newPosition);
+   // this.map.panTo(newPosition); // Pan the map to the new marker position
+    this.drawMapRoute();
   }
-
-  getRandomCoordinates(): [number, number] {
-    const longitude = (Math.random() * 360) - 180;
-    const latitude = (Math.random() * 180) - 90;
-    return [longitude, latitude];
-  }
-
-
-  backToDashboard(){
-    this.route.navigate(['/dashboard']);
-  }
-
+ 
   getGeoLocation() {
-    console.log("called!");
+    console.log('called!');
     this.socket.on('send-geolocation', (data) => {
       console.log(data);
-      this.renderMap([data['coords'].latitude, data['coords'].longitude ]);
-    });
-
-    this.socket.fromEvent('send-geolocation').subscribe(data => {
-      
+      //this.renderMap([data['coords'].latitude, data['coords'].longitude ]);
     });
   }
 }
