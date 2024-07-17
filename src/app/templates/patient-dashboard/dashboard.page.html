@@ -9,7 +9,13 @@
   (closeOnBoardingEvent)="showOnBoardingToggle()"
 ></cr-on-boarding> -->
 
-<ion-content #mainContent>
+<ion-content #mainContent class="ion-padding">
+  <a href="_blank"  href="tel:{{'902182020816'}}" class="call-button">
+    <ion-button shape="round">
+      <label>SOS</label>
+      <ion-icon name="call-outline"></ion-icon>
+  </ion-button>
+  </a>
   <div class="home-tab-container" [hidden]="selectedTab.id !== tabItems[0].id">
     <app-content-view></app-content-view>
   </div>
