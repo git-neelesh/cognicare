@@ -31,7 +31,8 @@ let socketIoConfig: SocketIoConfig = {
     ContentViewPageModule,
     GameViewModule,
     GalleryViewModule,
-    SocketIoModule.forRoot(socketIoConfig)
+    SocketIoModule.forRoot(socketIoConfig),
+    CameraViewModule
   ],
   declarations: [
     DashboardPage,
