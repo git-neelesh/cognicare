@@ -4,6 +4,7 @@ export interface MenuItem {
   artboard: string;
   status: boolean;
   show: boolean;
+  url?: string;
 }
 
 export const menuItemsList: MenuItem[] = [
@@ -22,11 +23,12 @@ export const menuItemsList: MenuItem[] = [
     show: false,
   },
   {
-    id: 'Favorites',
+    id: 'Add Patient',
     stateMachine: 'STAR_Interactivity',
     artboard: 'LIKE/STAR',
     status: false,
     show: false,
+    url: 'add-patient'
   },
   {
     id: 'Help',

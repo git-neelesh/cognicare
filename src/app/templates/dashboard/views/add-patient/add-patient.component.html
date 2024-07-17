@@ -1,0 +1,48 @@
+<div class="gradient-border">
+  <div class="sign-in-container">
+    <ion-text class="font-largeTitle">Add Patient</ion-text>
+    <ion-text class="font-headline subtitle">
+      <p>
+        Add Patient Details Here
+      </p>
+    </ion-text>
+
+    <ion-text class="font-subheadline input-title">
+      <p>First Name</p>
+    </ion-text>
+    <ion-item class="input-container" lines="none">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-input type="text" name="firstName" enterkeyhint="next"
+        [(ngModel)]="user.firstname"></ion-input>
+    </ion-item>
+
+    <ion-text class="font-subheadline input-title">
+      <p>Last Name</p>
+    </ion-text>
+    <ion-item class="input-container" lines="none">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-input type="text" name="lastname" enterkeyhint="next"
+        [(ngModel)]="user.lastname"></ion-input>
+    </ion-item>
+
+    <ion-text class="font-subheadline input-title">
+      <p>Mobile</p>
+    </ion-text>
+    <ion-item class="input-container" lines="none">
+      <ion-icon name="call-outline"></ion-icon>
+      <ion-input type="text" name="mobile" enterkeyhint="next"
+        [(ngModel)]="user.mobile"></ion-input>
+    </ion-item>  
+
+    <ion-button class="sign-in-button font-headline" expand="block" type="submit" (click)="gotoDashboard()">
+      <ion-icon class="icon" name="arrow-forward-outline"></ion-icon>
+      Add Patient
+    </ion-button>
+
+    <div class="close-container">
+      <ion-button (click)="gotoDashboard()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</div>

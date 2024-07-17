@@ -28,6 +28,12 @@ const routes: Routes = [
     loadChildren:() => import('./views/user-details/user-details.module').then(
       (m) => m.UserDetailsPageModule
     )
+  },
+  {
+    path: 'add-patient',
+    loadChildren:() => import('./views/add-patient/add-patient.module').then(
+      (m) => m.AddPatientModule
+    )
   }
 ];
 
