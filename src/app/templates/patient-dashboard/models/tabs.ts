@@ -4,6 +4,8 @@ export interface BottomTabItem {
   artboard: string;
   status: boolean;
   show: boolean;
+  svg?:string
+
 }
 
 export const tabItemsList: BottomTabItem[] = [
@@ -20,6 +22,7 @@ export const tabItemsList: BottomTabItem[] = [
     artboard: 'CHAT',
     status: false,
     show: false,
+    svg:'assets/chat.png'
   },
   {
     id: 'tab_timer',

@@ -26,8 +26,8 @@ export class OnBoardingPage implements OnInit {
 
   buttonToggle = true;
   showRiveAsset = false;
-  textRange20 = randTextRange({ min: 10, max: 20, length: 10 })
-  textRange100 = randTextRange({ min: 10, max: 100, length: 10 })
+  textRange20 = randTextRange({ min: 10, max: 30, length: 10 })
+  textRange100 = randTextRange({ min: 10, max: 30, length: 10 })
   title = randSuperheroName()
   courses = demoList;
   randJobArea = randJobArea()
@@ -83,7 +83,7 @@ if (this.authService.isLoggedIn()) {
 
     }
     setTimeout(() => {
-    location.reload()
+    //location.reload()
     }, 50);
   }
 

@@ -4,6 +4,7 @@ export interface MenuItem {
   artboard: string;
   status: boolean;
   show: boolean;
+  svg?:string
 }
 
 export const menuItemsList: MenuItem[] = [
@@ -13,6 +14,7 @@ export const menuItemsList: MenuItem[] = [
     artboard: 'HOME',
     status: false,
     show: false,
+    svg:'assets/mm_logo1.PNG'
   },
   {
     id: 'Search',
