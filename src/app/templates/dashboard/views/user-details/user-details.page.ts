@@ -41,11 +41,11 @@ export class UserDetailsPage implements OnInit, AfterViewInit {
   ngOnInit() {
   //  this.socket.connect();
    // this.getGeoLocation();
-   this.getCurrentGeoLocation();
+  //  this.getCurrentGeoLocation();
   }
 
   ngAfterViewInit(): void {
-    this.loadMap();
+    // this.loadMap();
   }
 
   async getCurrentGeoLocation() {
