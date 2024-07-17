@@ -4,6 +4,8 @@ export interface Demo {
   caption: string;
   color: string;
   image: string;
+  heading?: string;
+  description?: string;
 }
 
 export const demoList: Demo[] = [
@@ -11,24 +13,30 @@ export const demoList: Demo[] = [
     title: 'Your family',
     subtitle: 'You caring loved ones ',
     caption: '20 sections - 3 hours',
-    color: '120, 80, 240',
+    color: '190, 230, 241',
     image: 'assets/course_rive/topic_1.svg',
+    heading: 'Echoes',
+    description: 'connects multidisciplinary dementia care experts with professional care providers.'
   },
   {
     title: 'Caregivers',
     subtitle:
       'They will assists you with daily tasks and activities',
     caption: '47 sections - 11 hours',
-    color: '103, 146, 255',
+    color: '207, 230, 238',
     image: 'assets/course_rive/topic_2.svg',
+    heading: 'Triangle of care',
+    description: 'The disease might hide the person underneath but there is still a person who needs your love and attention.'
   },
   {
     title: 'Music you love',
     subtitle:
       'Rhythm and harmony find their way into the inward places of the Soul.',
     caption: '21 sections - 4 hours',
-    color: '0, 95, 231',
+    color: '213, 234, 234',
     image: 'assets/course_rive/topic_1.svg',
+    heading: '',
+    description: 'If you are a individual, primary care provideror family member for dementia patient, this app is for you.'
   },
 ];
 
