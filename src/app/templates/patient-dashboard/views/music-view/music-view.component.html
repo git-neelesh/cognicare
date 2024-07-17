@@ -1,5 +1,63 @@
-<app-audio-player [sources]="[
-  { src: 'http://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
-  { src: 'http://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
-  { src: 'http://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' }
-]"> </app-audio-player>
+<!-- <div class="content-container">
+  <div class="section-list">
+    <ion-grid class="section-grid">
+      <app-audio-player [sources]="[
+          { src: 'http://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
+          { src: 'http://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
+          { src: 'http://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' }
+        ]"> </app-audio-player>
+
+      <ion-row class="section-container" style="height: 75px; margin-top: 20px;" (click)="location.back()"
+        [style.background]="'#676a5d'">
+        <ion-col>
+          <ion-icon class="arrow" name="arrow-back-outline"></ion-icon>
+          <ion-text class="font-title2">Back</ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div> -->
+<!-- <div class="content-container">
+  <div class="section-list">
+    <ion-grid class="section-grid"> -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Music Player
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let song of songs" (click)="playAudio(song)">
+      <ion-thumbnail slot="start">
+        <img [src]="song.thumbnail" alt="Album Art">
+      </ion-thumbnail>
+      <ion-label>{{ song.title }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="currentSong" class="ion-text-center">
+    <h3>{{ currentSong.title }}</h3>
+    <img [src]="currentSong.thumbnail" class="img-thumbnail" alt="Album Art">
+    <audio controls>
+      <source [src]="currentSong.audio" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    class=> {{isPlaying}} ***
+    <div class="animation" [class.playing]="isPlaying"></div>
+  </div>
+
+</ion-content>
+<ion-row class="section-container" style="height: 75px; margin-top: 20px;" (click)="location.back()"
+  [style.background]="'#676a5d'">
+  <ion-col>
+    <ion-icon class="arrow" name="arrow-back-outline"></ion-icon>
+    <ion-text class="font-title2">Back</ion-text>
+  </ion-col>
+</ion-row>
+
+<!-- </ion-grid>
+  </div>
+</div> -->

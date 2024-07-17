@@ -13,6 +13,7 @@ import { OnBoardingPageModule } from './views/on-boarding/on-boarding.module';
 import { ContentViewPageModule } from './views/content-view/content-view.module';
 import { MenuRowComponent } from './navigation/side-menu/menu-row/menu-row.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { AddPatientModule } from './views/add-patient/add-patient.module';
 
 let socketIoConfig: SocketIoConfig = {
   url: 'http://192.168.1.100:3000'
@@ -27,6 +28,7 @@ let socketIoConfig: SocketIoConfig = {
     DashboardPageRoutingModule,
     OnBoardingPageModule,
     ContentViewPageModule,
+    AddPatientModule,
     SocketIoModule.forRoot(socketIoConfig)
   ],
   declarations: [
