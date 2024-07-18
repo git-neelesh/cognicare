@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.templates',
+  appId: 'com.echoes.uk',
   appName: 'echoes',
   webDir: 'www',
   server: {
