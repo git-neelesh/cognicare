@@ -11,7 +11,8 @@ import { Socket } from 'ngx-socket-io';
 import { MapService } from 'src/app/templates/services/map.service';
 import { Geolocation } from '@capacitor/geolocation';
 import { HttpClient } from '@angular/common/http';
-import { ChartData, ChartOptions } from 'chart.js';
+import { ChartData, ChartOptions, ChartType, Color } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
   selector: 'app-user-details',
@@ -31,18 +32,19 @@ export class UserDetailsPage implements OnInit, AfterViewInit {
   sourceMarker: any;
   destination_marker: any;
   private dataUrl = 'assets/data.json';
+  data: any;
 
-  public barChartOptions: ChartOptions = {
+  public chartType: ChartType = 'bar';
+  public barChartData: any[] = [];
+  public chartLabels: string[] = [];
+  public barChartColors: Color[] = [];
+
+  public options = {
     responsive: true,
-  };
-  public barChartLabels= [];
-  public barChartType: string = 'bar';
-  public barChartLegend = true;
-  public barChartData: ChartData<'bar'> = {
-    labels: [],
-    datasets: [
-      { data: [], label: 'Data' }
-    ]
+    scales: {
+      xAxes: [{ stacked: true }],
+      yAxes: [{ stacked: true }]
+    }
   };
 
   constructor(
@@ -59,15 +61,18 @@ export class UserDetailsPage implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-  //  this.socket.connect();
-   // this.getGeoLocation();
-  //  this.getCurrentGeoLocation();
-
   this.getData().subscribe(data => {
-    console.log(data);
-    //this.barChartLabels = data.map(item => item.name);
-    //this.barChartData.datasets[0].data = data.map(item => item.value);
+    this.data = data[Math.floor(Math.random() * 10) + 1];
+    this.chartLabels = this.data.game_details.map(game => game.name);
+    const successData = this.data.game_details.map(game => game.score.success);
+    const failureData = this.data.game_details.map(game => game.score.failure);
+    this.barChartData = [
+      { data: successData, label: 'Success', backgroundColor: '#008D99' },
+      { data: failureData, label: 'Failure', backgroundColor: '#F03D81' },
+    ];
+    this.chartType = 'bar';
   });
+
   }
 
   openPatientTracker(patient: any) {
