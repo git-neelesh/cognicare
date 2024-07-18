@@ -28,6 +28,8 @@
   </div>
 
   <ion-text class="recent-title font-title3">Recent</ion-text>
+
+  <ion-input type="text" placeholder="Type your message..." (keypress)="onKeyPress($event)"></ion-input>
   <!-- Recent course Section -->
   <div class="section-list">
     <ion-grid class="section-grid">
