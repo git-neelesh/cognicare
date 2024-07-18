@@ -23,7 +23,7 @@ export const tabItemsList: BottomTabItem[] = [
     artboard: 'CHAT',
     status: false,
     show: false,
-    svg:'chat'
+    svg:'chatbubbles-outline'
 
   },
   {
