@@ -21,8 +21,11 @@ export class TrackUserPage implements OnInit {
   patient: any;
   @ViewChild('map', { static: true }) mapElementRef!: ElementRef;
   map: any;
-  source = { lat: 18.5285, lng: 73.8744 };
+  source = { lat: 18.5255301, lng: 73.8648811 };
   destination = { lat: 18.5132, lng: 73.9242 };
+  /**
+   * 18.5255301,73.8648811
+   */
   directionsService: any;
   directionsDisplay: any;
   sourceMarker: any;
@@ -41,8 +44,8 @@ export class TrackUserPage implements OnInit {
   }
 
   ngOnInit() {
-  //  this.socket.connect();
-   // this.getGeoLocation();
+    this.socket.connect();
+    this.getGeoLocation();
   //  this.getCurrentGeoLocation();
   }
 
@@ -67,7 +70,7 @@ export class TrackUserPage implements OnInit {
         }
         await Geolocation.watchPosition(options, (data)=> {
           const source = { lat: data['coords'].latitude, lng: data['coords'].longitude};
-          this.changeMarkerPositionToNew(source);
+         // this.changeMarkerPositionToNew(source);
         });
         
       }
@@ -163,16 +166,12 @@ export class TrackUserPage implements OnInit {
     }, (response, status) => {
       if (status === 'OK') {
         this.directionsDisplay.setDirections(response);
-        //console.log('response: ', response);
-        //const directionsData = response.routes[0].legs[0];
-       // console.log(directionsData);
-      //  const duration = directionsData.duration.text;
-       // console.log(duration);
       } else {
        // console.log(status);
       }
     });
   }
+
   changeMarkerPositionToNew(data) {
     const newPosition = { lat: data?.lat, lng: data?.lng }; // Set the new marker position coordinates
     this.source = {...newPosition};
@@ -181,11 +180,22 @@ export class TrackUserPage implements OnInit {
    // this.map.panTo(newPosition); // Pan the map to the new marker position
     this.drawMapRoute();
   }
- 
+
+  changeMarkerDestination(data) {
+    const newPosition = { lat: data?.lat, lng: data?.lng }; // Set the new marker position coordinates
+    this.destination = {...newPosition};
+    this.destination_marker.setPosition(newPosition);
+   // this.map.panTo(newPosition); // Pan the map to the new marker position
+    //this.drawMapRoute();
+    this.map.panTo(newPosition);
+      console.log(data);
+  }
+
   getGeoLocation() {
     console.log('called!');
     this.socket.on('send-geolocation', (data) => {
-      console.log(data);
+      console.log([data['coords'].latitude, data['coords'].longitude]);
+      this.changeMarkerDestination({lat: data['coords'].latitude, lng: data['coords'].longitude});
       //this.renderMap([data['coords'].latitude, data['coords'].longitude ]);
     });
   }

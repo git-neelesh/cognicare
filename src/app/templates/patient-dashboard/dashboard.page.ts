@@ -65,50 +65,6 @@ export class DashboardPage implements OnInit {
 
   showOnBoardingToggle() {
     this.showOnBoarding = !this.showOnBoarding;
-
-    // calculated space based on screen scale (0.92) + 20px to show home behind modal
-    //const transformBottom = 'calc(((100vh - (100vh * 0.92)) / 2) + 20px)';
-    /*   const onBoardingAnim = this.animationCtrl
-        .create()
-        .addElement(this.onBoardingRef?.nativeElement)
-        .fromTo(
-          'transform',
-          // Here 40px is extra shadow area to avoid it being shown when modal is closed
-          `translateY(calc(-1 * (100vh + ${transformBottom} + 40px)))`,
-          `translateY(calc(-1 * ${transformBottom}))`
-        ); */
-
-    /* const contentViewAnim = this.animationCtrl
-      .create()
-      .addElement(this.mainContentRef?.nativeElement)
-      .fromTo('transform', 'none', 'scale(0.92)');
-
-    const bottomTabAnim = this.animationCtrl
-      .create()
-      .addElement(this.bottomTabRef?.nativeElement)
-      .fromTo('transform', 'none', 'translateY(200px)');
-
-    const tabWhiteBgAnim = this.animationCtrl
-      .create()
-      .addElement(this.tabWhiteBgRef?.nativeElement)
-      .fromTo('opacity', '1', '0');
-
-    const allAnim = this.animationCtrl
-      .create()
-      .duration(500)
-      .easing('ease-in-out')
-      .addAnimation([
-        onBoardingAnim,
-        contentViewAnim,
-        bottomTabAnim,
-        tabWhiteBgAnim,
-      ]);
- */
-    /*  if (this.showOnBoarding) {
-       allAnim.play();
-     } else {
-       allAnim.direction('reverse').play();
-     } */
   }
 
   tabChange(event: any) {console.log(event)
@@ -195,8 +151,8 @@ export class DashboardPage implements OnInit {
         }
 
         let options: PositionOptions = {
-          maximumAge: 8000,
-          timeout: 1000,
+          maximumAge: 20000,
+          timeout: 20000,
           enableHighAccuracy: true
         }
         await Geolocation.watchPosition(options, (value) => {

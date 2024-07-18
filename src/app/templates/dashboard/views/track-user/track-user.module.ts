@@ -7,13 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { TrackUserPageRoutingModule } from './track-user-routing.module';
 
 import { TrackUserPage } from './track-user.page';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
+let socketIoConfig: SocketIoConfig = {
+  url: 'hack-team-memory-makers.el.r.appspot.com/'
+}; 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TrackUserPageRoutingModule
+    TrackUserPageRoutingModule,
+    SocketIoModule.forRoot(socketIoConfig)
   ],
   declarations: [TrackUserPage]
 })

@@ -57,7 +57,6 @@ export class UserDetailsPage implements OnInit, AfterViewInit {
 
   constructor(
     private route: Router,
-    private socket: Socket,
     private mapService: MapService,
     private renderer: Renderer2,
     private http: HttpClient
