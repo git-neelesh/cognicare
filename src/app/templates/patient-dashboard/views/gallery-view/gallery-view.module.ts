@@ -5,6 +5,7 @@ import { GalleryViewRoutingModule } from './gallery-view-routing.module';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { GalleryViewComponent } from './gallery-view.component';
+import { BottomTabBarModule } from '../../navigation/bottom-tab-bar/bottom-tab-bar.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { GalleryViewComponent } from './gallery-view.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    GalleryViewRoutingModule
+    GalleryViewRoutingModule,
+    BottomTabBarModule
   ]
 })
 export class GalleryViewModule { }

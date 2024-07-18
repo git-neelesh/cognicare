@@ -140,7 +140,7 @@ div.content-container {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  // padding: 40px;
   padding-top: calc(var(--safe-area-inset-top) + 80px);
   padding-bottom: calc(var(--ion-safe-area-bottom) + 40px);
   overflow-y: scroll;

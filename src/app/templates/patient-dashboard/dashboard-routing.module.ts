@@ -38,7 +38,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'gallery',
+    path: 'family',
     loadChildren: () =>
       import('./views/gallery-view/gallery-view-routing.module').then(
         (m) => m.GalleryViewRoutingModule
