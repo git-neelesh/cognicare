@@ -1,6 +1,6 @@
 ion-content {
   --background: var(--cr-color-background);
-  --padding-bottom: calc(var(--ion-safe-area-bottom) + 60px);
+  --padding-bottom: calc(var(--ion-safe-area-bottom) + 25px);
   position: absolute;
   z-index: 1;
   border-radius: 30px;
@@ -93,7 +93,7 @@ cr-on-boarding {
 }
 
 .home-tab-container {
-  padding-top: calc(var(--safe-area-inset-top) + 60px);
+  padding-top: calc(var(--safe-area-inset-top) + 25px);
 }
 
 .other-tabs {

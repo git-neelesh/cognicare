@@ -76,6 +76,9 @@ this.langService.makeRequest([{
     if(course.title === "Your family"){
       this.route.navigate(['patient-dashboard/family']);
     }
+    if(course.title === "Music you love"){
+      this.route.navigate(['patient-dashboard/music']);
+    }
   }
   goto(route:string) {
     this.route.navigateByUrl(`/patient-dashboard/${route}`)
