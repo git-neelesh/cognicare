@@ -20,10 +20,10 @@ export const tabItemsList: BottomTabItem[] = [
   {
     id: 'tab_search',
     stateMachine: 'SEARCH_Interactivity',
-    artboard: 'SEARCH',
+    artboard: 'CHAT',
     status: false,
     show: false,
-    svg:'search-outline'
+    svg:'chat'
 
   },
   {
