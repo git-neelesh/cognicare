@@ -13,9 +13,12 @@ export class MusicViewComponent  implements OnInit {
   isPlaying = false;
   selectedTab = tabItemsList[2];
 
+
   songs = [
     { title: 'Happiness', thumbnail: 'assets/icon/song1.png', audio: 'assets/music/happiness.mp3' },
-    { title: 'Relaxing', thumbnail: 'assets/icon/song1.png', audio: 'assets/music/happiness.mp3' }
+    { title: 'Relaxing', thumbnail: 'assets/icon/song1.png', audio: 'assets/music/happiness.mp3' },
+    { title: 'Meditation', thumbnail: 'assets/icon/song1.png', audio: 'assets/music/happiness.mp3' },
+    { title: 'Feel Good', thumbnail: 'assets/icon/song1.png', audio: 'assets/music/happiness.mp3' },
     // Add more songs as needed
   ];
   currentSong: any = null;
@@ -24,6 +27,9 @@ export class MusicViewComponent  implements OnInit {
   ngOnInit() {}
 
   playAudio(song: any) {
+    // if(this.isPlaying) {
+    //   this.stopAudio();
+    // }
     // this.audioService.playAudio(url);
     this.currentSong = song;
     this.isPlaying = true;
