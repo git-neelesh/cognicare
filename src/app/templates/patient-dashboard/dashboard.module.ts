@@ -19,7 +19,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { BottomTabBarModule } from './navigation/bottom-tab-bar/bottom-tab-bar.module';
 
 let socketIoConfig: SocketIoConfig = {
-  url: 'https://aab6-160-83-96-177.ngrok-free.app/'
+  url: 'http://localhost:3000'
 }; 
 
 @NgModule({
