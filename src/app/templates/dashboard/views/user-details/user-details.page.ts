@@ -33,6 +33,8 @@ export class UserDetailsPage implements OnInit, AfterViewInit {
   destination_marker: any;
   private dataUrl = 'assets/data.json';
   data: any;
+  weakestGame= '';
+  reasoning = '';
 
   public chartType: ChartType = 'bar';
   public barChartData: any[] = [];
@@ -46,6 +48,12 @@ export class UserDetailsPage implements OnInit, AfterViewInit {
       yAxes: [{ stacked: true }]
     }
   };
+  gameToBrainMap = {
+    'Game 1': 'Frontal Lobe',
+    'Game 2': 'Parietal Lobe',
+    'Game 3': 'Temporal Lobe',
+  };
+
 
   constructor(
     private route: Router,
@@ -61,6 +69,7 @@ export class UserDetailsPage implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    
   this.getData().subscribe(data => {
     this.data = data[Math.floor(Math.random() * 10) + 1];
     this.chartLabels = this.data.game_details.map(game => game.name);
@@ -71,9 +80,45 @@ export class UserDetailsPage implements OnInit, AfterViewInit {
       { data: failureData, label: 'Failure', backgroundColor: '#F03D81' },
     ];
     this.chartType = 'bar';
+    this.analyzeGameDetails(this.data.game_details);
   });
 
   }
+
+  analyzeGameDetails(gameDetails: any[]) {
+    let weakestGameName = '';
+    let lowestRate = 1;
+
+    gameDetails.forEach(game => {
+        const success = game.score.success;
+        const failure = game.score.failure;
+        const rate = success / (success + failure);
+
+        if (rate < lowestRate) {
+            lowestRate = rate;
+            weakestGameName = game.name;
+        }
+    });
+
+    let reasoning = '';
+    switch (weakestGameName) {
+        case 'Game 1':
+            reasoning = 'Weak in Game 1. This suggests a potential weakness in the frontal lobe.';
+            break;
+        case 'Game 2':
+            reasoning = 'Weak in Game 2. This suggests a potential weakness in the temporal lobe.';
+            break;
+        case 'Game 3':
+            reasoning = 'Weak in Game 3. This suggests a potential weakness in the parietal lobe.';
+            break;
+        default:
+            reasoning = 'Weakness identified, further analysis needed.';
+            break;
+    }
+
+    this.weakestGame = weakestGameName;
+    this.reasoning = reasoning;
+}
 
   openPatientTracker(patient: any) {
     let navigationExtras: NavigationExtras = {

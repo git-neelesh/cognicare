@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BottomTabItem, tabItemsList } from '../../models/tabs';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'cr-bottom-tab-bar',
@@ -11,7 +12,7 @@ export class BottomTabBarComponent implements OnInit {
   @Input() selectedTab: BottomTabItem = this.tabItems[0];
   @Output() onTabChange = new EventEmitter<BottomTabItem>();
 
-  constructor() {}
+  constructor(private auth: AuthService) {}
 
   ngOnInit() {
     // Temporary solution to fix the rive asset loading issue causing "Binding Error",
@@ -22,6 +23,10 @@ export class BottomTabBarComponent implements OnInit {
   }
 
   onIconPress(tab: BottomTabItem) {
+    if(tab.id === 'tab_logout') {
+      this.auth.logout();
+      return
+    }
     if (this.selectedTab !== tab) {
       tab.status = true;
       setTimeout(() => {

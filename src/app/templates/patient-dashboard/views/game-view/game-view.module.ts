@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { GameViewComponent } from './game-view.component';
 import { SymbolMatchGameComponent } from './symbol-match-game/symbol-match-game.component';
+import { BottomTabBarModule } from '../../navigation/bottom-tab-bar/bottom-tab-bar.module';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { SymbolMatchGameComponent } from './symbol-match-game/symbol-match-game.
     FormsModule,
     IonicModule,
     GameViewRoutingModule,
+    BottomTabBarModule
   ]
 })
 export class GameViewModule { }

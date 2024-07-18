@@ -1,21 +1,21 @@
 <div class="gradient-border">
-  <ion-row class="tabs-container">
-    <ion-col
-      *ngFor="let tab of tabItems; trackBy: trackTabItems"
-      (click)="onIconPress(tab)"
-    >
-      <div class="active-indicator-container">
-        <div
-          class="active-indicator"
-          [ngClass]="selectedTab.id === tab.id ? 'expand' : ''"
-        ></div>
-      </div>
-      <ion-icon name="{{tab.svg}}" style="width: 30px;
-    height: 30px;
-    color: #fff;"></ion-icon>
-      <!-- <ion-img class="section-img" *ngIf="tab.svg" [src]="tab.svg" style="width: 36px;height: 36px;justify-content: center;margin-left: 5px;"></ion-img> -->
+    <ion-row class="tabs-container">
+        <ion-col
+            *ngFor="let tab of tabItems; trackBy: trackTabItems"
+            (click)="onIconPress(tab)">
+            <div class="active-indicator-container">
+                <div
+                    class="active-indicator"
+                    [ngClass]="selectedTab.id === tab.id ? 'expand' : ''"></div>
+            </div>
+            <ion-icon
+                name="{{tab.svg}}"
+                style="width: 30px;    height: 30px; color: #fff;"></ion-icon>
+            <!-- <ion-img class="section-img" *ngIf="tab.svg" [src]="tab.svg" style="width: 36px;height: 36px;justify-content: center;margin-left: 5px;"></ion-img> -->
 
-      <!-- <canvas
+
+
+            <!-- <canvas
         [ngStyle]="{ opacity: selectedTab.id === tab.id ? 1 : 0.5 }"
         riv="icons"
         [artboard]="tab.artboard"
@@ -28,6 +28,6 @@
           <riv-input name="active" [value]="tab.status"></riv-input>
         </riv-state-machine>
       </canvas> -->
-    </ion-col>
-  </ion-row>
+        </ion-col>
+    </ion-row>
 </div>

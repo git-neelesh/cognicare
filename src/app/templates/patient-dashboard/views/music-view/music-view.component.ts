@@ -14,8 +14,8 @@ export class MusicViewComponent  implements OnInit {
   selectedTab = tabItemsList[2];
 
   songs = [
-    { title: 'Song 1', thumbnail: 'assets/icon/song1.png', audio: 'http://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
-    { title: 'Song 2', thumbnail: 'assets/icon/song1.png', audio: 'http://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' }
+    { title: 'Happiness', thumbnail: 'assets/icon/song1.png', audio: 'assets/music/happiness.mp3' },
+    { title: 'Relaxing', thumbnail: 'assets/icon/song1.png', audio: 'assets/music/happiness.mp3' }
     // Add more songs as needed
   ];
   currentSong: any = null;
@@ -38,15 +38,4 @@ export class MusicViewComponent  implements OnInit {
     this.audioService.stopAudio();
     this.isPlaying = false;
   }
-  
-
-  // togglePlay() {
-  //   if (this.isPlaying) {
-  //     this.audio.pause();
-  //   } else {
-  //     this.audio.play();
-  //   }
-  //   this.isPlaying = !this.isPlaying;
-  // }
-
 }

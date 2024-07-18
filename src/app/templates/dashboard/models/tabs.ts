@@ -20,10 +20,10 @@ export const tabItemsList: BottomTabItem[] = [
   {
     id: 'tab_search',
     stateMachine: 'SEARCH_Interactivity',
-    artboard: 'SEARCH',
+    artboard: 'CHAT',
     status: false,
     show: false,
-    svg:'search-outline'
+    svg:'chatbubbles-outline'
 
   },
   {
@@ -51,6 +51,15 @@ export const tabItemsList: BottomTabItem[] = [
     status: false,
     show: false,
     svg:'person-outline'
+
+  },
+  {
+    id: 'tab_logout',
+    stateMachine: 'USER_Interactivity',
+    artboard: 'USER',
+    status: false,
+    show: false,
+    svg:'log-out-outline'
 
   },
 ];
