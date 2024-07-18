@@ -6,7 +6,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { AnimationController, IonModal, Platform } from '@ionic/angular';
+import { IonModal, Platform } from '@ionic/angular';
 import { randJobArea, randSuperheroName, randTextRange } from '@ngneat/falso';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
@@ -35,27 +35,24 @@ export class OnBoardingPage implements OnInit {
   img = 'assets/logo.jpeg'
   constructor(
     public platform: Platform,
-    private animationCtrl: AnimationController,
     private route: Router,
-    public authService:AuthService
+    public authService: AuthService
   ) {
     setTimeout(() => {
       this.splashScreen = false
     }, 2000);
-  // this.textRange = randTextRange
-  // this.title = randSuperheroName
-if (this.authService.isLoggedIn()) {
+    if (this.authService.isLoggedIn()) {
 
-     if (localStorage.getItem('type') === 'patient') {
-    this.route.navigateByUrl('/patient-dashboard')
-    } else if (localStorage.getItem('type') === 'family') {
-    this.route.navigateByUrl('/family-dashboard')
-    }  else {
-    this.route.navigateByUrl('/dashboard')
+      if (localStorage.getItem('type') === 'patient') {
+        this.route.navigateByUrl('/patient-dashboard')
+      } else if (localStorage.getItem('type') === 'family') {
+        this.route.navigateByUrl('/family-dashboard')
+      } else {
+        this.route.navigateByUrl('/dashboard')
+
+      }
 
     }
-
-}
 
   }
 
@@ -69,7 +66,7 @@ if (this.authService.isLoggedIn()) {
     this.buttonToggle = !this.buttonToggle;
     setTimeout(() => {
       this.signInModal?.present();
-    }, 800);
+    }, 200);
   }
 
   onCloseOnBoarding() {
@@ -80,61 +77,16 @@ if (this.authService.isLoggedIn()) {
     this.signInModal?.dismiss();
     console.log(localStorage.getItem('type'), localStorage.getItem('type') === 'patient')
     if (localStorage.getItem('type') === 'patient') {
-    this.route.navigateByUrl('/patient-dashboard')
+      this.route.navigateByUrl('/patient-dashboard')
     } else if (localStorage.getItem('type') === 'family') {
-    this.route.navigateByUrl('/family-dashboard')
-    }  else {
-    this.route.navigateByUrl('/dashboard')
+      this.route.navigateByUrl('/family-dashboard')
+    } else {
+      this.route.navigateByUrl('/dashboard')
 
     }
     setTimeout(() => {
-    //location.reload()
+      //location.reload()
     }, 50);
   }
 
-  enterAnimation = (baseEl: HTMLElement) => {
-    const root = baseEl.shadowRoot;
-    const containerEl = this.containerRef?.nativeElement;
-
-    const backdropAnimation = this.animationCtrl
-      .create()
-      .addElement(root?.querySelector('ion-backdrop')!)
-      .fromTo('opacity', '0.01', 'var(--backdrop-opacity)');
-
-    const wrapperAnimation = this.animationCtrl
-      .create()
-      .addElement(root?.querySelector('.modal-wrapper')!)
-      .keyframes([
-        { offset: 0, opacity: '0.5', transform: 'translateY(-100vh)' },
-        { offset: 1, opacity: '1', transform: 'translateY(0vh)' },
-      ]);
-
-    const onBoardingContent = this.animationCtrl
-      .create()
-      .addElement(containerEl!)
-      .keyframes([
-        { offset: 0, transform: 'translateY(0px)' },
-        { offset: 1, transform: 'translateY(-50px)' },
-      ]);
-    const closeBtnAnim = this.animationCtrl
-      .create()
-      .addElement(this.closeBtnRef?.nativeElement!)
-      .fromTo('transform', 'translateY(0)', 'translateY(-150px)');
-
-    return this.animationCtrl
-      .create()
-      .addElement(baseEl)
-      .easing('ease-in-out')
-      .duration(500)
-      .addAnimation([
-        backdropAnimation,
-        wrapperAnimation,
-        onBoardingContent,
-        closeBtnAnim,
-      ]);
-  };
-
-  leaveAnimation = (baseEl: HTMLElement) => {
-    return this.enterAnimation(baseEl).direction('reverse');
-  };
 }
