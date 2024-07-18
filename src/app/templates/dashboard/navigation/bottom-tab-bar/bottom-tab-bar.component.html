@@ -10,7 +10,10 @@
           [ngClass]="selectedTab.id === tab.id ? 'expand' : ''"
         ></div>
       </div>
-      <ion-img class="section-img" *ngIf="tab.svg" [src]="tab.svg" style="width: 36px;height: 36px;justify-content: center;margin-left: 5px;"></ion-img>
+      <ion-icon name="{{tab.svg}}" style="width: 30px;
+    height: 30px;
+    color: #fff;"></ion-icon>
+      <!-- <ion-img class="section-img" *ngIf="tab.svg" [src]="tab.svg" style="width: 36px;height: 36px;justify-content: center;margin-left: 5px;"></ion-img> -->
 
       <!-- <canvas
         [ngStyle]="{ opacity: selectedTab.id === tab.id ? 1 : 0.5 }"

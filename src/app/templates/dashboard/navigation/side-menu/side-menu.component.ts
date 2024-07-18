@@ -13,6 +13,7 @@ import {
   menuItemsList,
 } from '../../models/side-menu';
 import { randFullName, randJobArea } from '@ngneat/falso';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cr-side-menu',
@@ -37,7 +38,8 @@ export class SideMenuComponent implements OnInit {
   constructor(
     private animationCtrl: AnimationController,
     private navigation: NavController,
-    public platform: Platform
+    public platform: Platform,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -89,6 +91,7 @@ export class SideMenuComponent implements OnInit {
           .play();
       }
     }
+    this.router.navigate([menu.url]);
   }
 
   onDarkModeToggle() {

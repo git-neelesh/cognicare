@@ -5,6 +5,7 @@ export interface MenuItem {
   status: boolean;
   show: boolean;
   svg?:string
+  url?: string;
 }
 
 export const menuItemsList: MenuItem[] = [
@@ -14,7 +15,7 @@ export const menuItemsList: MenuItem[] = [
     artboard: 'HOME',
     status: false,
     show: false,
-    svg:'assets/mm_logo1.PNG'
+    svg:'assets/logo.jpeg'
   },
   {
     id: 'Search',
@@ -24,11 +25,12 @@ export const menuItemsList: MenuItem[] = [
     show: false,
   },
   {
-    id: 'Favorites',
+    id: 'Add Patient',
     stateMachine: 'STAR_Interactivity',
     artboard: 'LIKE/STAR',
     status: false,
     show: false,
+    url: 'add-patient'
   },
   {
     id: 'Help',

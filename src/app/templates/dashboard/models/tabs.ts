@@ -14,7 +14,7 @@ export const tabItemsList: BottomTabItem[] = [
     artboard: 'HOME',
     status: false,
     show: false,
-    svg:'assets/home.svg'
+    svg:'home-outline'
 
   },
   {
@@ -23,7 +23,7 @@ export const tabItemsList: BottomTabItem[] = [
     artboard: 'SEARCH',
     status: false,
     show: false,
-    svg:'assets/home.svg'
+    svg:'search-outline'
 
   },
   {
@@ -32,7 +32,7 @@ export const tabItemsList: BottomTabItem[] = [
     artboard: 'TIMER',
     status: false,
     show: false,
-    svg:'assets/home.svg'
+    svg:'time-outline'
 
   },
   {
@@ -41,7 +41,7 @@ export const tabItemsList: BottomTabItem[] = [
     artboard: 'BELL',
     status: false,
     show: false,
-    svg:'assets/home.svg'
+    svg:'notifications-outline'
 
   },
   {
@@ -50,7 +50,7 @@ export const tabItemsList: BottomTabItem[] = [
     artboard: 'USER',
     status: false,
     show: false,
-    svg:'assets/home.svg'
+    svg:'person-outline'
 
   },
 ];

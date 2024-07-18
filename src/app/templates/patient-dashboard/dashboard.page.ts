@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
-import { AnimationController, ModalController } from '@ionic/angular';
+import {  ModalController } from '@ionic/angular';
 import { tabItemsList } from './models/tabs';
 import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
@@ -30,7 +30,7 @@ export class DashboardPage implements OnInit {
   showRiveMenuBtn = false; // Temporary
   avatarArr = [1, 2, 3];
   isLoggedIn: boolean = false
-  img = 'assets/mm_logo1.PNG'
+  img = 'assets/logo.jpeg'
   constructor(
     private authService:AuthService,
     private socket: Socket,
@@ -203,7 +203,7 @@ export class DashboardPage implements OnInit {
           console.log(value);
           this.socket.emit('get-geolocation', value);
         });
-        
+
       }
 
     } catch(exception) {

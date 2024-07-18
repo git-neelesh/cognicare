@@ -11,12 +11,12 @@ ion-img.bg-spline {
   left: -50%; // This shift the image to center
   right: 0;
   margin: auto;
-  filter: blur(40px);
-  transform: translateX(200px) translateY(100px);
+  filter: blur(161px);
+  transform: translateX(200px) translateY(200px);
 }
 
 canvas.rive-bg {
-  filter: blur(30px);
+  filter: blur(5px);
 }
 
 div.content-container {
@@ -67,11 +67,11 @@ div.content-container {
       grid-row: 1;
     }
     .shadow {
-      height: 100%;
-      background: rgba(0, 0, 0, 0.3);
-      filter: blur(10px);
-      transform: translateY(10px);
+      height: 60px;
+      background: white;
+      transform: translateY(5px);
       z-index: -1;
+      border-radius: 50px;
     }
     .btnContent {
       color: black;
@@ -145,6 +145,11 @@ ion-modal::part(backdrop) {
 }
 .courses-list-title {
   padding: 10px 20px;
+  font-size: 36px;
+    font-weight: bold;
+    color: rgb(190, 230, 241);
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .recent-title {
@@ -163,8 +168,9 @@ ion-modal::part(backdrop) {
   }
 
   .course-container {
-    width: 305px;
-    height: auto;
+    width: 316px;
+    height: 727px;
+    max-height: 788px;
     position: relative;
     display: flex;
     flex: 0 0 auto;
@@ -258,4 +264,48 @@ ion-modal::part(backdrop) {
       }
     }
   }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* Ensure the container takes full height of the screen */
+}
+
+.image-container {
+  width: 80%; /* Adjust width as needed */
+  max-width: 300px; /* Adjust maximum width as needed */
+  text-align: center;
+  margin-bottom: 20px; /* Adjust spacing between image and text */
+}
+
+.image-container img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px; /* Optional: Add border radius for rounded corners */
+}
+
+.text-container {
+  text-align: center;
+}
+
+.text-container h2 {
+  font-size: 24px; /* Adjust font size as needed */
+  margin-bottom: 10px; /* Adjust spacing between heading and paragraph */
+}
+
+.text-container p {
+  font-size: 16px; /* Adjust font size as needed */
+  color: #666; /* Adjust text color */
+  line-height: 1.6; /* Adjust line height for readability */
+}
+ion-img::part(image) {
+  border-radius: 0% !important;
+}
+.course-img::part(image) {
+  border-radius: 25% !important;
 }

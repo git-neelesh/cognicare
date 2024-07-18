@@ -31,12 +31,17 @@ export class OnBoardingPage implements OnInit {
   title = randSuperheroName()
   courses = demoList;
   randJobArea = randJobArea()
+  splashScreen: boolean = true
+  img = 'assets/logo.jpeg'
   constructor(
     public platform: Platform,
     private animationCtrl: AnimationController,
     private route: Router,
     public authService:AuthService
   ) {
+    setTimeout(() => {
+      this.splashScreen = false
+    }, 2000);
   // this.textRange = randTextRange
   // this.title = randSuperheroName
 if (this.authService.isLoggedIn()) {
