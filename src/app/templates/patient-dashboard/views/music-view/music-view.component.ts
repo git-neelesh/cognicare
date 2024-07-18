@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AudioService } from 'src/app/services/audio.service';
 import { tabItemsList } from '../../models/tabs';
+import { AnimationController, Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-music-view',
@@ -13,17 +14,23 @@ export class MusicViewComponent  implements OnInit {
   isPlaying = false;
   selectedTab = tabItemsList[2];
 
+
   songs = [
     { title: 'Happiness', thumbnail: 'assets/icon/song1.png', audio: 'assets/music/happiness.mp3' },
-    { title: 'Relaxing', thumbnail: 'assets/icon/song1.png', audio: 'assets/music/happiness.mp3' }
+    { title: 'Relaxing', thumbnail: 'assets/icon/song1.png', audio: 'assets/music/happiness.mp3' },
+    { title: 'Meditation', thumbnail: 'assets/icon/song1.png', audio: 'assets/music/happiness.mp3' },
+    { title: 'Feel Good', thumbnail: 'assets/icon/song1.png', audio: 'assets/music/happiness.mp3' },
     // Add more songs as needed
   ];
   currentSong: any = null;
-  constructor(private audioService: AudioService, public location: Location) { }
+  constructor(private audioService: AudioService, public location: Location, public platform: Platform, private animationCtrl: AnimationController) { }
 
   ngOnInit() {}
 
   playAudio(song: any) {
+    // if(this.isPlaying) {
+    //   this.stopAudio();
+    // }
     // this.audioService.playAudio(url);
     this.currentSong = song;
     this.isPlaying = true;

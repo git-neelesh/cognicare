@@ -27,6 +27,7 @@ export class AudioService {
     if (this.media) {
       this.media.stop();
       this.media.release();
+      this.media = '';
     }
   }
 }

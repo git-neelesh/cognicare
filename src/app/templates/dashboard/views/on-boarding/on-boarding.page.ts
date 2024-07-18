@@ -151,7 +151,7 @@ export class OnBoardingPage implements OnInit {
     this.langService.makeRequest([{
       "text": "Welcome to Echoes"
     }, {
-      "text": "connects multidisciplinary dementia care experts with professional care providers."
+      "text": "Connects multidisciplinary dementia care experts with professional care providers."
     }, {
       "text": "The disease might hide the person underneath but there is still a person who needs your love and attention."
     }, {

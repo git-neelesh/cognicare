@@ -61,7 +61,6 @@ cr-on-boarding {
 }
 
 .on-boarding-btn {
-  width: 60px;
   height: 60px;
   border-radius: 18px;
   background: inherit;
@@ -119,3 +118,9 @@ cr-on-boarding {
  ion-img::part(image) {
    border-radius: 25%;
  }
+
+ .call-button {
+  display: block;
+  margin: 0 auto;
+  width: 60px;
+}
