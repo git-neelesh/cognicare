@@ -11,7 +11,7 @@ export interface Demo {
 export const demoList: Demo[] = [
   {
     title: 'Your family',
-    subtitle: 'You caring loved ones ',
+    subtitle: 'You caring loved ones',
     caption: '20 sections - 3 hours',
     color: '120, 80, 240',
     image: 'assets/course_rive/topic_1.svg',

@@ -11,6 +11,7 @@ import { randJobArea, randSuperheroName, randTextRange } from '@ngneat/falso';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { demoList } from '../../models/onboarding-demo-list';
+import { LangService } from 'src/app/lang.service';
 
 @Component({
   selector: 'cr-on-boarding',
@@ -34,32 +35,33 @@ export class OnBoardingPage implements OnInit {
   splashScreen: boolean = true
   img = 'assets/logo.jpeg'
   lang: string = 'en'
-
+  translateData: any
   constructor(
     public platform: Platform,
     private animationCtrl: AnimationController,
     private route: Router,
-    public authService:AuthService
+    public authService: AuthService,
+    private langService: LangService
   ) {
     setTimeout(() => {
       // this.splashScreen = true
-    localStorage.setItem('lang', this.lang)
+      // localStorage.setItem('lang', this.lang)
 
     }, 300);
-  // this.textRange = randTextRange
-  // this.title = randSuperheroName
-if (this.authService.isLoggedIn()) {
+    // this.textRange = randTextRange
+    // this.title = randSuperheroName
+    if (this.authService.isLoggedIn()) {
 
-     if (localStorage.getItem('type') === 'patient') {
-    this.route.navigateByUrl('/patient-dashboard')
-    } else if (localStorage.getItem('type') === 'family') {
-    this.route.navigateByUrl('/family-dashboard')
-    }  else {
-    this.route.navigateByUrl('/dashboard')
+      if (localStorage.getItem('type') === 'patient') {
+        this.route.navigateByUrl('/patient-dashboard')
+      } else if (localStorage.getItem('type') === 'family') {
+        this.route.navigateByUrl('/family-dashboard')
+      } else {
+        this.route.navigateByUrl('/dashboard')
+
+      }
 
     }
-
-}
 
   }
 
@@ -73,7 +75,7 @@ if (this.authService.isLoggedIn()) {
     this.buttonToggle = !this.buttonToggle;
     setTimeout(() => {
       this.signInModal?.present();
-    }, 800);
+    }, 0);
   }
 
   onCloseOnBoarding() {
@@ -84,15 +86,15 @@ if (this.authService.isLoggedIn()) {
     this.signInModal?.dismiss();
     console.log(localStorage.getItem('type'), localStorage.getItem('type') === 'patient')
     if (localStorage.getItem('type') === 'patient') {
-    this.route.navigateByUrl('/patient-dashboard')
+      this.route.navigateByUrl('/patient-dashboard')
     } else if (localStorage.getItem('type') === 'family') {
-    this.route.navigateByUrl('/family-dashboard')
-    }  else {
-    this.route.navigateByUrl('/dashboard')
+      this.route.navigateByUrl('/family-dashboard')
+    } else {
+      this.route.navigateByUrl('/dashboard')
 
     }
     setTimeout(() => {
-    //location.reload()
+      //location.reload()
     }, 50);
   }
 
@@ -141,10 +143,23 @@ if (this.authService.isLoggedIn()) {
   leaveAnimation = (baseEl: HTMLElement) => {
     return this.enterAnimation(baseEl).direction('reverse');
   };
-   triggerLangEvent(){
+  triggerLangEvent() {
     localStorage.setItem('lang', this.lang)
   }
   next() {
     this.splashScreen = false
+    this.langService.makeRequest([{
+      "text": "Welcome to Echoes"
+    }, {
+      "text": "connects multidisciplinary dementia care experts with professional care providers."
+    }, {
+      "text": "The disease might hide the person underneath but there is still a person who needs your love and attention."
+    }, {
+      "text": "If you are a individual, primary care provideror family member for dementia patient, this app is for you."
+    },{
+      "text": "Login"
+    }], localStorage.getItem('lang'), this.translateData).then((data: any) => {
+      this.translateData = JSON.parse(data)
+    })
   }
 }

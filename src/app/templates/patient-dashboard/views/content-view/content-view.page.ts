@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Demo, courseSectionsList, demoList } from '../../models/demo-list';
 import { randColor, randHex, randUser,randProductDescription, randSoonDate  } from '@ngneat/falso';
 import { Router } from '@angular/router';
+import { LangService } from 'src/app/lang.service';
 
 @Component({
   selector: 'app-content-view',
@@ -34,8 +35,27 @@ export class ContentViewPage implements OnInit {
   color = ['#7676ab', '#059ab4', '#f03d81', '#064167', '#7b8b49', '#0aade4', '#0ffe0e', '#008d99', '#925fb1', '#445269']
   desc = randProductDescription({ length: 10 })
   dateInfo = randSoonDate()
-  constructor(private route: Router) {
-    console.log(randUser({length:10}), randHex({length:10}))
+  translateData: any
+  constructor(private route: Router,
+    private langService: LangService
+  ) {
+this.langService.makeRequest([{
+      "text": "Patient Dashboard"
+    }, {
+      "text": "Your family"
+    }, {
+      "text": "You caring loved ones"
+    }, {
+      "text": "Caregivers"
+    },{
+      "text": "They will assists you with daily tasks and activities"
+    },{
+      "text": "Music you love"
+    },{
+      "text": "Rhythm and harmony find their way into the inward places of the Soul."
+    }], localStorage.getItem('lang'), this.translateData).then((data: any) => {
+      this.translateData = JSON.parse(data)
+    })
 
   }
 

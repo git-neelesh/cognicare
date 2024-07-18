@@ -1,5 +1,6 @@
-<div>
-  <ion-text class="courses-list-title font-largeTitle">Patient Dashboard</ion-text>
+<div *ngIf="translateData?.length > 0">
+  {{translateData | json}}
+  <ion-text class="courses-list-title font-largeTitle">{{translateData?.[0]?.translations?.[0].text}}</ion-text>
   <!-- Course VCard -->
   <div class="courses-list">
     <div

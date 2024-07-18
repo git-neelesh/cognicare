@@ -24,13 +24,9 @@ export class LangService {
       }]
     })
   }
-  convertLang(translateDta: string, to: string, outPut: any) {
+  convertLang(translateDta: any, to: string, outPut: any) {
     // WARNING: For POST requests, body is set to null by browsers.
-    var data = JSON.stringify([
-      {
-        "text": translateDta
-      }
-    ]);
+    var data = JSON.stringify(translateDta);
 
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = false;
@@ -50,4 +46,33 @@ export class LangService {
 
     xhr.send(data);
   }
+ makeRequest =  (translateDta: any, to: string, outPut: any) => {
+  return new Promise(function (resolve, reject) {
+    var data = JSON.stringify(translateDta);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", `https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=${to}`);
+    xhr.setRequestHeader("Ocp-Apim-Subscription-Key", "9962acc6c8c14d65b7325fde271cb442");
+    xhr.setRequestHeader("Ocp-Apim-Subscription-Region", "centralindia");
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.setRequestHeader("X-ClientTraceId", `call_${Math.random()}`);
+    xhr.onload = function () {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        resolve(xhr.response);
+      } else {
+        reject({
+          status: xhr.status,
+          statusText: xhr.statusText
+        });
+      }
+    };
+    xhr.onerror = function () {
+      reject({
+        status: xhr.status,
+        statusText: xhr.statusText
+      });
+    };
+    xhr.send(data);
+  });
+}
+
 }
