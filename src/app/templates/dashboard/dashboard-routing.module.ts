@@ -36,7 +36,7 @@ const routes: Routes = [
     )
   },
   {
-    path: 'track-user:/id',
+    path: 'track-user/:id',
     loadChildren: () => import('./views/track-user/track-user.module').then( m => m.TrackUserPageModule)
   }
 ];

@@ -47,7 +47,7 @@ export class TrackUserPage implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    // this.loadMap();
+    this.loadMap();
   }
 
   async getCurrentGeoLocation() {
