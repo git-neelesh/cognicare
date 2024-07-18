@@ -63,6 +63,6 @@ export const tabItemsList: BottomTabItem[] = [
     status: false,
     show: false,
     route: '/',
-    svg:'log-out'
+    svg:'log-out-outline'
   },
 ];
