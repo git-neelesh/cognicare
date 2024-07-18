@@ -1,5 +1,15 @@
 <div class="main-container">
-  <ion-text class="courses-list-title font-largeTitle">My Family</ion-text>
+  <ion-header translucent>
+    <ion-toolbar color="">
+      <ion-buttons slot="start">
+        <ion-button (click)="location.back()">
+          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title> My Family </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <!-- <ion-text class="courses-list-title font-largeTitle">My Family</ion-text> -->
   <ion-img src="assets/course_rive/spline.svg" class="bg-spline" alt="Spline background for blur effect"></ion-img>
   <canvas riv="shapes" class="rive-bg" [width]="platform.width()" [height]="platform.height()" *ngIf="true">
     <riv-animation name="Animation 1" play></riv-animation>
@@ -21,7 +31,7 @@
                   <ion-text class="font-body">{{section.caption}}</ion-text>
                 </ion-col>
               </ion-row>
-              <ng-container *ngIf="last">
+              <!-- <ng-container *ngIf="last">
                 <ion-row class="section-container" style="height: 75px; margin-top: 20px;" (click)="location.back()"
                   [style.background]="'#676a5d'">
                   <ion-col>
@@ -29,7 +39,7 @@
                     <ion-text class="font-title2">Back</ion-text>
                   </ion-col>
                 </ion-row>
-              </ng-container>
+              </ng-container> -->
             </ion-col>
           </ion-row>
           <ng-template #showSelectedGame>

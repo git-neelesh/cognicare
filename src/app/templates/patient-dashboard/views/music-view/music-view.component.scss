@@ -31,3 +31,105 @@
 .animation.playing {
   animation: pulse 1s infinite;
 }
+
+ion-img.bg-spline {
+  width: 840px; // x1.5 the original image width dimension (560), just to make it look same as original app
+  align-self: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -50%; // This shift the image to center
+  right: 0;
+  margin: auto;
+  filter: blur(40px);
+  transform: translateX(200px) translateY(100px);
+}
+
+canvas.rive-bg {
+  filter: blur(30px);
+}
+.main-container {
+  background: white;
+}
+div.content-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  // padding: 40px;
+  padding-top: calc(var(--safe-area-inset-top) + 80px);
+  padding-bottom: calc(var(--ion-safe-area-bottom) + 40px);
+  overflow-y: scroll;
+
+  .title {
+    max-width: 260px;
+
+    ion-text {
+      color: black;
+      font-size: 37px;
+      font-family: Poppins-Bold;
+    }
+  }
+
+  .subtitle {
+    margin: 16px 0px;
+
+    ion-text {
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  ion-buttons.startCoursebtn {
+    max-width: 236px;
+    max-height: 64px;
+    display: grid;
+    margin: 16px 0px;
+    cursor: pointer;
+
+    // This is just to have all the contents within a dimension, as position absolute wasn't working properly
+    // better approach?
+    .contained {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .shadow {
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      filter: blur(10px);
+      transform: translateY(10px);
+      z-index: -1;
+    }
+
+    .btnContent {
+      color: black;
+      font-weight: 500;
+      text-align: center;
+      align-self: center;
+      justify-content: center;
+      display: flex;
+      transform: translateX(4px) translateY(4px);
+      z-index: 1;
+
+      .arrow {
+        width: 24px;
+        height: 24px;
+      }
+
+      ion-text {
+        align-self: center;
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .footer-text {
+    color: rgba(0, 0, 0, 0.7);
+  }
+}

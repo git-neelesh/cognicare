@@ -20,6 +20,7 @@ export class AuthService {
   logout(): void {
     this.loggedIn = false;
     localStorage.clear();
+    localStorage.setItem('lang', 'en');
     this.route.navigate(['on-boarding']);
   }
 
