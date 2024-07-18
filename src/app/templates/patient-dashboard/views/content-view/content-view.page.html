@@ -1,12 +1,12 @@
 <div *ngIf="translateData?.length > 0">
-  {{translateData | json}}
+  <!-- {{translateData | json}} -->
   <ion-text class="courses-list-title font-largeTitle">{{translateData?.[0]?.translations?.[0].text}}</ion-text>
   <!-- Course VCard -->
   <div class="courses-list">
     <div
       class="course-container"
       *ngFor="let course of courses; trackBy: trackCourses"
-      [style.--course-bg]="course.color"
+      [style.--course-bg]="course.color" (click)="goToRoutes(course)"
     >
       <ion-img class="course-img" [src]="course.image"></ion-img>
 

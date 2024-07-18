@@ -75,7 +75,7 @@ export class OnBoardingPage implements OnInit {
     this.buttonToggle = !this.buttonToggle;
     setTimeout(() => {
       this.signInModal?.present();
-    }, 0);
+    }, 200);
   }
 
   onCloseOnBoarding() {

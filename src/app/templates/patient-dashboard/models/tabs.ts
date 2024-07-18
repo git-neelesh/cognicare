@@ -44,8 +44,8 @@ export const tabItemsList: BottomTabItem[] = [
     artboard: 'BELL',
     status: false,
     show: false,
-    svg:'notifications-outline'
-
+    svg:'notifications-outline',
+    route: 'patient-dashboard/games'
   },
   {
     id: 'tab_user',
@@ -53,7 +53,16 @@ export const tabItemsList: BottomTabItem[] = [
     artboard: 'USER',
     status: false,
     show: false,
-    svg:'person-outline'
-
+    svg:'person-outline',
+    route: 'patient-dashboard/family'
+  },
+  {
+    id: 'tab_logout',
+    stateMachine: 'USER_Interactivity',
+    artboard: 'logout',
+    status: false,
+    show: false,
+    route: '/',
+    svg:'log-out'
   },
 ];
