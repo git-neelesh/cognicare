@@ -33,10 +33,10 @@
   </div>
 </ion-content>
 
-<div #onBoardingBtn class="on-boarding-btn" (click)="showOnBoardingToggle()">
-    <ion-img class="section-img" [src]="img" style="width: 60px;height: 60px;justify-content: end;border-radius:30%"></ion-img>
+<!-- <div #onBoardingBtn class="on-boarding-btn" (click)="showOnBoardingToggle()">
+    <ion-img class="section-img" [src]="img" style="width: 60px;height: 60px;justify-content: end;"></ion-img>
 
-</div>
+</div> -->
 
 <!-- Menu button -->
 <!-- <canvas
@@ -57,10 +57,10 @@
 <div #tabWhiteBg class="tabs-white-underlay"></div>
 
 <!-- Custom Tab -->
-<cr-bottom-tab-bar
-  #bottomTabs
-  style="z-index: 2"
-  [selectedTab]="selectedTab"
-  (onTabChange)="selectedTab = $event; tabChange($event)"
-></cr-bottom-tab-bar>
+  <cr-bottom-tab-bar
+    #bottomTabs
+    style="z-index: 2"
+    [selectedTab]="selectedTab"
+  
+  ></cr-bottom-tab-bar>
 </ng-container>

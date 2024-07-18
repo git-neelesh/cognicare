@@ -1,3 +1,7 @@
+.font-largeTitle {
+  color: #6ca894;
+}
+
 .gradient-border {
   // margin: 16px;
   margin-top: 45%;
@@ -24,7 +28,8 @@ div.sign-in-container {
   border-radius: 19px; // outer radius - padding
 
   .subtitle p {
-    margin: 24px 0;
+    margin: 10px 0;
+    color: #6ca894;
   }
 
   .input-title {
@@ -61,11 +66,12 @@ div.sign-in-container {
   }
 
   .sign-in-button {
+    margin-top: 10px;
     --background: #f77d8e;
     --background-hover: #f77d8e;
     --background-activated: pink;
     --background-focused: pink;
-    --border-radius: 8px 20px 20px;
+    --border-radius: 8px;
     --box-shadow: 0 10px 20px rgba(247, 125, 142, 0.5);
     margin: 24px 0;
     // Setting padding above doesn't shift the ion-button, instead overflow the container, so applying extra margin

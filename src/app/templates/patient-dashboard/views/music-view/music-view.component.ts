@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AudioService } from 'src/app/services/audio.service';
+import { tabItemsList } from '../../models/tabs';
 
 @Component({
   selector: 'app-music-view',
@@ -10,6 +11,7 @@ import { AudioService } from 'src/app/services/audio.service';
 export class MusicViewComponent  implements OnInit {
   audio: HTMLAudioElement;
   isPlaying = false;
+  selectedTab = tabItemsList[2];
 
   songs = [
     { title: 'Song 1', thumbnail: 'assets/icon/song1.png', audio: 'http://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },

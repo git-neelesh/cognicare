@@ -16,10 +16,8 @@ export class SignInComponent implements OnInit {
   address = randFullAddress();
   type='patient'
   isLoading = false;
-  textRange: any
 
   constructor(private route: Router) {
-  this.textRange = randTextRange({ min: 10, max: 20, length: 10 })
   }
 
   ngOnInit() {}
