@@ -56,4 +56,13 @@ export const tabItemsList: BottomTabItem[] = [
     svg:'person-outline'
 
   },
+  {
+    id: 'tab_logout',
+    stateMachine: 'USER_Interactivity',
+    artboard: 'logout',
+    status: false,
+    show: false,
+    route: '/',
+    svg:'log-out'
+  },
 ];
