@@ -4,7 +4,20 @@
   <div class="bottom-left" style="position: absolute;
   top: 80%;
   left: 50%;
-  transform: translate(-50%, -50%);">loading...</div>
+  transform: translate(-50%, -50%);">
+  <ion-select aria-label="Fruit" [(ngModel)]="lang" (ionChange)="triggerLangEvent()" placeholder="Select language"
+    style="margin-left: 21%;">
+    <ion-select-option value="en">English</ion-select-option>
+    <!-- <ion-select-option value="Scottish">Scottish</ion-select-option> -->
+    <ion-select-option value="cy">Welsh</ion-select-option>
+    <ion-select-option value="ga">Irish</ion-select-option>
+  </ion-select>
+  <ion-button shape="flat" (click)="next()">
+    <label>Next</label>
+    <!-- <ion-icon name="next-outline"></ion-icon> -->
+    <ion-icon name="arrow-forward-outline"></ion-icon>
+  </ion-button>
+</div>
 </ng-container>
 <ng-template #onBoarding>
 <div class="main-container" *ngIf="!authService.isLoggedIn()">

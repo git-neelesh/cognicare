@@ -33,6 +33,8 @@ export class OnBoardingPage implements OnInit {
   randJobArea = randJobArea()
   splashScreen: boolean = true
   img = 'assets/logo.jpeg'
+  lang: string = 'en'
+
   constructor(
     public platform: Platform,
     private animationCtrl: AnimationController,
@@ -40,8 +42,10 @@ export class OnBoardingPage implements OnInit {
     public authService:AuthService
   ) {
     setTimeout(() => {
-      this.splashScreen = false
-    }, 2000);
+      // this.splashScreen = true
+    localStorage.setItem('lang', this.lang)
+
+    }, 300);
   // this.textRange = randTextRange
   // this.title = randSuperheroName
 if (this.authService.isLoggedIn()) {
@@ -137,4 +141,10 @@ if (this.authService.isLoggedIn()) {
   leaveAnimation = (baseEl: HTMLElement) => {
     return this.enterAnimation(baseEl).direction('reverse');
   };
+   triggerLangEvent(){
+    localStorage.setItem('lang', this.lang)
+  }
+  next() {
+    this.splashScreen = false
+  }
 }

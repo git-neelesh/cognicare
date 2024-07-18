@@ -17,6 +17,7 @@ export class SignInComponent implements OnInit {
   type='patient'
   isLoading = false;
   textRange: any
+  lang: string = 'English'
 
   constructor(private route: Router) {
   this.textRange = randTextRange({ min: 10, max: 20, length: 10 })
@@ -66,5 +67,8 @@ export class SignInComponent implements OnInit {
 
   onSignInClose() {
     this.onClose.emit();
+  }
+  triggerLangEvent(){
+    localStorage.setItem('lang', this.lang)
   }
 }
