@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { BottomTabItem, tabItemsList } from '../../models/tabs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cr-bottom-tab-bar',
@@ -11,12 +12,11 @@ export class BottomTabBarComponent implements OnInit, OnChanges {
   @Input() selectedTab: BottomTabItem = this.tabItems[0];
   @Output() onTabChange = new EventEmitter<BottomTabItem>();
 
-  constructor() {}
+  constructor(private route: Router) { }
 
-  ngOnChanges(changes: SimpleChanges){
-   if(changes){
-
-   }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes) {
+    }
   }
 
   ngOnInit() {
@@ -33,7 +33,15 @@ export class BottomTabBarComponent implements OnInit, OnChanges {
       setTimeout(() => {
         tab.status = false;
       }, 1000);
-      this.onTabChange.emit(tab);
+      this.tabChange(tab);
+    }
+  }
+
+  tabChange(event: any) {
+    if (!!event.route) {
+      this.route.navigate([event.route]);
+    } else {
+      this.onTabChange.emit(event);
     }
   }
 

@@ -38,6 +38,7 @@ export class MusicViewComponent  implements OnInit {
     this.audioService.stopAudio();
     this.isPlaying = false;
   }
+  
 
   // togglePlay() {
   //   if (this.isPlaying) {

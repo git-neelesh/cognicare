@@ -5,6 +5,7 @@ export interface BottomTabItem {
   status: boolean;
   show: boolean;
   svg?:string
+  route?: string;
 
 }
 
@@ -15,8 +16,8 @@ export const tabItemsList: BottomTabItem[] = [
     artboard: 'HOME',
     status: false,
     show: false,
-    svg:'home-outline'
-
+    svg:'home-outline',
+    route: 'patient-dashboard'
   },
   {
     id: 'tab_chat',
@@ -24,16 +25,17 @@ export const tabItemsList: BottomTabItem[] = [
     artboard: 'CHAT',
     status: false,
     show: false,
-    svg:'chat-outline'
+    svg:'chatbubbles-outline'
 
   },
   {
-    id: 'tab_timer',
-    stateMachine: 'TIMER_Interactivity',
-    artboard: 'TIMER',
+    id: 'tab_music',
+    stateMachine: 'MUSIC_Interactivity',
+    artboard: 'MUSIC',
     status: false,
     show: false,
-    svg:'time-outline'
+    svg:'musical-notes-outline',
+    route: 'patient-dashboard/music'
 
   },
   {
