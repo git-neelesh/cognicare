@@ -8,9 +8,9 @@ import {
 } from '@angular/core';
 import { AnimationController, IonModal, Platform } from '@ionic/angular';
 import { randJobArea, randSuperheroName, randTextRange } from '@ngneat/falso';
-import { demoList } from '../../models/demo-list';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
+import { demoList } from '../../models/onboarding-demo-list';
 
 @Component({
   selector: 'cr-on-boarding',
