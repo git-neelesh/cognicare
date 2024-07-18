@@ -4,6 +4,7 @@ import { AnimationController } from '@ionic/angular';
 import { tabItemsList } from './models/tabs';
 import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
+import { LangService } from 'src/app/lang.service';
 
 @Component({
   selector: 'app-course-rive',
@@ -32,13 +33,19 @@ export class DashboardPage implements OnInit {
 
   constructor(public animationCtrl: AnimationController,
     private authService:AuthService,
-  private route: Router) {}
-
+  private route: Router,private lang: LangService) {}
+data: any = null
   ngOnInit(): void {
     // Temporary solution to fix the rive asset loading issue causing "Binding Error",
     // which fails for most if rendered together, so This will load them all with a delay,
     setTimeout(() => (this.showRiveMenuBtn = true), 1000);
     console.log(this.authService.isLoggedIn())
+    if (this.authService.isLoggedIn()) {
+    this.lang.convertLang('hello how are you', localStorage.getItem('lang'), this.data)
+    console.log(this.data)
+    }
+
+
     if (this.authService.isLoggedIn()) {
       this.isLoggedIn = true
       //this.route.navigateByUrl('/on-boarding')

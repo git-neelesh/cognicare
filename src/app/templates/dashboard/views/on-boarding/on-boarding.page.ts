@@ -6,11 +6,12 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { IonModal, Platform } from '@ionic/angular';
+import { AnimationController, IonModal, Platform } from '@ionic/angular';
 import { randJobArea, randSuperheroName, randTextRange } from '@ngneat/falso';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { demoList } from '../../models/onboarding-demo-list';
+import { LangService } from 'src/app/lang.service';
 
 @Component({
   selector: 'cr-on-boarding',
@@ -33,14 +34,22 @@ export class OnBoardingPage implements OnInit {
   randJobArea = randJobArea()
   splashScreen: boolean = true
   img = 'assets/logo.jpeg'
+  lang: string = 'en'
+  translateData: any
   constructor(
     public platform: Platform,
+    private animationCtrl: AnimationController,
     private route: Router,
-    public authService: AuthService
+    public authService: AuthService,
+    private langService: LangService
   ) {
     setTimeout(() => {
-      this.splashScreen = false
-    }, 2000);
+      // this.splashScreen = true
+      // localStorage.setItem('lang', this.lang)
+
+    }, 300);
+    // this.textRange = randTextRange
+    // this.title = randSuperheroName
     if (this.authService.isLoggedIn()) {
 
       if (localStorage.getItem('type') === 'patient') {
@@ -89,4 +98,68 @@ export class OnBoardingPage implements OnInit {
     }, 50);
   }
 
+  enterAnimation = (baseEl: HTMLElement) => {
+    const root = baseEl.shadowRoot;
+    const containerEl = this.containerRef?.nativeElement;
+
+    const backdropAnimation = this.animationCtrl
+      .create()
+      .addElement(root?.querySelector('ion-backdrop')!)
+      .fromTo('opacity', '0.01', 'var(--backdrop-opacity)');
+
+    const wrapperAnimation = this.animationCtrl
+      .create()
+      .addElement(root?.querySelector('.modal-wrapper')!)
+      .keyframes([
+        { offset: 0, opacity: '0.5', transform: 'translateY(-100vh)' },
+        { offset: 1, opacity: '1', transform: 'translateY(0vh)' },
+      ]);
+
+    const onBoardingContent = this.animationCtrl
+      .create()
+      .addElement(containerEl!)
+      .keyframes([
+        { offset: 0, transform: 'translateY(0px)' },
+        { offset: 1, transform: 'translateY(-50px)' },
+      ]);
+    const closeBtnAnim = this.animationCtrl
+      .create()
+      .addElement(this.closeBtnRef?.nativeElement!)
+      .fromTo('transform', 'translateY(0)', 'translateY(-150px)');
+
+    return this.animationCtrl
+      .create()
+      .addElement(baseEl)
+      .easing('ease-in-out')
+      .duration(500)
+      .addAnimation([
+        backdropAnimation,
+        wrapperAnimation,
+        onBoardingContent,
+        closeBtnAnim,
+      ]);
+  };
+
+  leaveAnimation = (baseEl: HTMLElement) => {
+    return this.enterAnimation(baseEl).direction('reverse');
+  };
+  triggerLangEvent() {
+    localStorage.setItem('lang', this.lang)
+  }
+  next() {
+    this.splashScreen = false
+    this.langService.makeRequest([{
+      "text": "Welcome to Echoes"
+    }, {
+      "text": "connects multidisciplinary dementia care experts with professional care providers."
+    }, {
+      "text": "The disease might hide the person underneath but there is still a person who needs your love and attention."
+    }, {
+      "text": "If you are a individual, primary care provideror family member for dementia patient, this app is for you."
+    },{
+      "text": "Login"
+    }], localStorage.getItem('lang'), this.translateData).then((data: any) => {
+      this.translateData = JSON.parse(data)
+    })
+  }
 }

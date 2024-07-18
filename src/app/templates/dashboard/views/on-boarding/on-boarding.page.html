@@ -4,11 +4,24 @@
   <div class="bottom-left" style="position: absolute;
   top: 80%;
   left: 50%;
-  transform: translate(-50%, -50%);">loading...</div>
+  transform: translate(-50%, -50%);">
+  <ion-select aria-label="Fruit" [(ngModel)]="lang" (ionChange)="triggerLangEvent()" placeholder="Select language"
+    style="margin-left: 21%;">
+    <ion-select-option value="en">English</ion-select-option>
+    <!-- <ion-select-option value="Scottish">Scottish</ion-select-option> -->
+    <ion-select-option value="cy">Welsh</ion-select-option>
+    <ion-select-option value="ga">Irish</ion-select-option>
+  </ion-select>
+  <ion-button shape="flat" (click)="next()">
+    <label>Next</label>
+    <!-- <ion-icon name="next-outline"></ion-icon> -->
+    <ion-icon name="arrow-forward-outline"></ion-icon>
+  </ion-button>
+</div>
 </ng-container>
 <ng-template #onBoarding>
-<div class="main-container" *ngIf="!authService.isLoggedIn()">
-  <ion-text class="courses-list-title font-largeTitle" style="font-size: 26px;">Welcome to Echoes</ion-text>
+<div class="main-container" *ngIf="!authService.isLoggedIn() && translateData?.length > 0">
+  <ion-text class="courses-list-title font-largeTitle" style="font-size: 26px;">{{translateData?.[0]?.translations?.[0].text}}</ion-text>
   <ion-img src="assets/course_rive/spline.svg" class="bg-spline" alt="Spline background for blur effect"></ion-img>
 
   <canvas riv="shapes" class="rive-bg" [width]="platform.width()" [height]="platform.height()" *ngIf="showRiveAsset">
@@ -18,23 +31,23 @@
   <div class="container-list">
     <div #container class="content-container">
       <div class="courses-list">
-        <div class="course-container" *ngFor="let course of courses;let last = last" [style.--course-bg]="course.color">
+        <div class="course-container" *ngFor="let course of courses;let last = last;let i = index" [style.--course-bg]="course.color">
           <!-- <ion-img class="course-img" [src]="course.image"></ion-img> -->
-  
+
           <div class="container">
             <div class="image-container">
               <img src={{course.image}} alt="Image Description">
             </div>
             <div class="text-container">
               <h2>{{course.heading}}</h2>
-              <p>{{course.description}}</p>
+              <p>{{translateData?.[i+1]?.translations?.[0].text}}</p>
             </div>
           </div>
           <ion-buttons class="startCoursebtn" (click)="startCoursePressed()" *ngIf="last">
             <div class="contained shadow"></div>
             <div class="contained btnContent">
               <ion-icon class="arrow" name="arrow-forward-outline"></ion-icon>
-              <ion-text>Login</ion-text>
+              <ion-text>{{translateData?.[4]?.translations?.[0].text}}</ion-text>
             </div>
           </ion-buttons>
         </div>

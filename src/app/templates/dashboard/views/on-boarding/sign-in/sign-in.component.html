@@ -1,14 +1,14 @@
-<div class="gradient-border">
+<div class="gradient-border" *ngIf="translateData?.length > 0">
   <div class="sign-in-container">
-    <ion-text class="font-largeTitle">Sign in</ion-text>
+    <ion-text class="font-largeTitle">{{translateData?.[0]?.translations?.[0].text}}</ion-text>
     <ion-text class="font-headline subtitle">
       <p>
-       Navigating Dementia Together
+       {{translateData?.[1]?.translations?.[0].text}}
       </p>
     </ion-text>
 
     <ion-text class="font-subheadline input-title">
-      <p>Email</p>
+      <p>{{translateData?.[2]?.translations?.[0].text}}</p>
     </ion-text>
     <ion-item class="input-container" lines="none">
       <ion-img src="assets/course_rive/icon_email.svg"></ion-img>
@@ -21,7 +21,7 @@
       ></ion-input>
     </ion-item>
     <ion-text class="font-subheadline input-title">
-      <p>Password</p>
+      <p>{{translateData?.[3]?.translations?.[0].text}}</p>
     </ion-text>
     <ion-item class="input-container" lines="none">
       <ion-img src="assets/course_rive/icon_lock.svg"></ion-img>
@@ -29,16 +29,16 @@
     </ion-item>
     <ion-radio-group [(ngModel)]="type" value="patient"
     style="display: flex; margin-top: 10px;margin-left: 0px;">
-      <ion-radio value="caretaker">Caretaker</ion-radio><br />
-      <ion-radio value="patient" style="margin-left: 15px;">Patient</ion-radio><br />
-      <ion-radio value="family" style="margin-left: 15px;">Family</ion-radio><br />
+      <ion-radio value="caretaker">{{translateData?.[4]?.translations?.[0].text}}</ion-radio><br />
+      <ion-radio value="patient" style="margin-left: 5px;">{{translateData?.[5]?.translations?.[0].text}}</ion-radio><br />
+      <!-- <ion-radio value="family" style="margin-left: 5px;">Family</ion-radio><br /> -->
     </ion-radio-group>
-    <ion-select aria-label="Fruit" placeholder="Select language" style="margin-left: 21%;">
-      <ion-select-option value="English">English</ion-select-option>
+    <!-- <ion-select aria-label="Fruit" [(ngModel)]="lang" (ionChange)="triggerLangEvent()" placeholder="Select language" style="margin-left: 21%;">
+      <ion-select-option value="en">English</ion-select-option>
       <ion-select-option value="Scottish">Scottish</ion-select-option>
-      <ion-select-option value="Welsh">Welsh</ion-select-option>
-      <ion-select-option value="Irish">Irish</ion-select-option>
-    </ion-select>
+      <ion-select-option value="cy">Welsh</ion-select-option>
+      <ion-select-option value="ga">Irish</ion-select-option>
+    </ion-select> -->
     <ion-button
       class="sign-in-button font-headline"
       expand="block"
@@ -48,7 +48,7 @@
       "
     >
       <ion-icon class="icon" name="arrow-forward-outline"></ion-icon>
-      Sign In
+      {{translateData?.[6]?.translations?.[0].text}}
     </ion-button>
 
     <ion-row class="or-divider">
@@ -58,7 +58,7 @@
     </ion-row>
 
     <ion-text class="footer-text font-subheadline">
-      <p>Sign up with Email, Apple or Google</p>
+      <p>{{translateData?.[7]?.translations?.[0].text}}</p>
     </ion-text>
     <ion-row class="footer-container">
       <ion-img src="assets/course_rive/logos/logo_email.svg"></ion-img>
