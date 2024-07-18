@@ -30,24 +30,6 @@ export class SignInComponent implements OnInit {
   ) {
     this.isLoading = true;
     const isValid = this.email.trim() !== '' && this.password.trim() !== '';
-
-    // setTimeout(() => {
-    //   if (isValid) {
-    //     success?.fire()
-    //     localStorage.setItem('isLoggedIn', JSON.stringify(true))
-    //     localStorage.setItem('type', this.type)
-
-    //   } else {
-    //     failure?.fire()
-    //   }
-    // }, 1000);
-
-    // setTimeout(() => {
-    //   this.isLoading = false;
-    //   reset?.fire();
-    //   isValid && confetti?.fire();
-    // }, 3000);
-
     isValid &&
         success?.fire()
         confetti?.fire();
@@ -59,7 +41,7 @@ export class SignInComponent implements OnInit {
         this.password = '';
         this.type = '';
         this.address = '';
-      }, 3000);
+      }, 200);
   }
 
   onSignInClose() {

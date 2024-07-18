@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { BottomTabItem, tabItemsList } from '../../models/tabs';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'cr-bottom-tab-bar',
@@ -12,7 +13,7 @@ export class BottomTabBarComponent implements OnInit, OnChanges {
   @Input() selectedTab: BottomTabItem = this.tabItems[0];
   @Output() onTabChange = new EventEmitter<BottomTabItem>();
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private auth: AuthService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes) {
@@ -38,6 +39,10 @@ export class BottomTabBarComponent implements OnInit, OnChanges {
   }
 
   tabChange(event: any) {
+    if(event.id === 'tab_logout') {
+      this.auth.logout();
+      return
+    }
     if (!!event.route) {
       this.route.navigate([event.route]);
     } else {
