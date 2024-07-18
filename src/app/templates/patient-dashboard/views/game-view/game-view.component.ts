@@ -18,14 +18,14 @@ export class GameViewComponent implements OnInit {
     {
       title: 'Guess the word',
       caption: 'Guess the correct word',
-      color: '#db38e5',
+      color: '#9CC5FF',
       image: 'assets/games/guess-the-word.jpeg',
       id: 'G_1'
     },    
     {
       title: 'Symbol matching',
       caption: 'Match the symbols',
-      color: '#8682af',
+      color: '#e6d65f',
       image: 'assets/games/match-icons.jpeg',
       id: 'G_3'
 
@@ -33,7 +33,7 @@ export class GameViewComponent implements OnInit {
     {
       title: 'Match the word',
       caption: 'Matching words',
-      color: '#e6d65f',
+      color: '#8682af',
       image: 'assets/games/crossword.jpeg',
       id: 'G_2'
 

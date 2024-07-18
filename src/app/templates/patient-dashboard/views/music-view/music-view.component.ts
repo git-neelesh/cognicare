@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AudioService } from 'src/app/services/audio.service';
 import { tabItemsList } from '../../models/tabs';
+import { AnimationController, Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-music-view',
@@ -22,7 +23,7 @@ export class MusicViewComponent  implements OnInit {
     // Add more songs as needed
   ];
   currentSong: any = null;
-  constructor(private audioService: AudioService, public location: Location) { }
+  constructor(private audioService: AudioService, public location: Location, public platform: Platform, private animationCtrl: AnimationController) { }
 
   ngOnInit() {}
 
