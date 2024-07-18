@@ -19,7 +19,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { BottomTabBarModule } from './navigation/bottom-tab-bar/bottom-tab-bar.module';
 
 let socketIoConfig: SocketIoConfig = {
-  url: 'http://127.0.0.1:3000'
+  url: 'http://localhost:3000'
 }; 
 
 @NgModule({
