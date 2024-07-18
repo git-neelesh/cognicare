@@ -25,11 +25,22 @@
   </ion-card>
 
   <!-- Map section -->
-  <ion-button expand="block" style="padding-left: 8px; padding-right: 8px;" class="location">
+  <ion-button expand="block" style="padding: 16px 8px; backgroundColor: '#0AADE4' " class="location">
     <ion-icon slot="start" name="Location"></ion-icon>
     Track Live Location
   </ion-button>
+
+  <!-- Game Analysis -->
+  <ion-card>
+    <div style> 
+      <p class="live-location">Game Analysis</p>
+      <canvas style="padding: 16px 8px" baseChart [datasets]="barChartData" [labels]="chartLabels" [options]="options" [legend]="true"></canvas>
+    </div>
+  </ion-card>
+
 </ion-content>
+
+
 
 <ion-row class="section-container" style="height: 75px; margin: 20px;" (click)="backToDashboard()"
   [style.background]="'#676a5d'">
