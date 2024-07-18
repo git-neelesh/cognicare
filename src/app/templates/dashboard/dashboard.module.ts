@@ -16,7 +16,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { AddPatientModule } from './views/add-patient/add-patient.module';
 
 let socketIoConfig: SocketIoConfig = {
-  url: 'http://127.0.0.1:3000'
+  url: 'https://aab6-160-83-96-177.ngrok-free.app/socket.io/socket.io.js'
 }; 
 
 
