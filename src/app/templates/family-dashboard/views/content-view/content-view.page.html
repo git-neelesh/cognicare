@@ -1,56 +1,39 @@
-<div>
-  <ion-text class="courses-list-title font-largeTitle">family Dashboard</ion-text>
-  <!-- Course VCard -->
-  <div class="courses-list">
-    <div
-      class="course-container"
-      *ngFor="let course of courses; trackBy: trackCourses"
-      [style.--course-bg]="course.color"
-    >
-      <ion-img class="course-img" [src]="course.image"></ion-img>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Capacitor PWA
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-      <ion-text class="course-title font-title2">{{course.title}}</ion-text>
-      <ion-text class="course-subtitle font-subtitle">
-       {{desc}}
-      </ion-text>
-      <ion-text class="course-caption font-footnote2">
-        {{dateInfo | date:'short'}}
-      </ion-text>
-      <div class="spacer"></div>
-      <ion-row class="avatar-container">
-        <ion-img
-          *ngFor="let number of [1, 2, 3] | shuffleArray; let i = index; trackBy: trackAvatarItems"
-          [style.transform]="'translateX(calc(' + i + ' * -20px))'"
-          src="assets/course_rive/avatars/avatar_{{number}}.svg"
-        ></ion-img>
-      </ion-row>
-    </div>
-  </div>
+<!-- <ion-content> -->
+  <ion-button (click)="takePicture()" expand="block">
+    <ion-icon name="camera" slot="start"></ion-icon>
+    Capture image
+  </ion-button>
 
-  <ion-text class="recent-title font-title3">Recent</ion-text>
-  <!-- Recent course Section -->
-  <div class="section-list">
-    <ion-grid class="section-grid">
-      <ion-row>
-        <ion-col
-          *ngFor="let section of courseSections; trackBy: trackCourses;let i=index"
-          size-lg="6"
-          size="12"
-        >
-          <ion-row class="section-container" [style.background]="section.color"
-          (click)="goto(section.route)">
-            <ion-col>
-              <ion-text class="font-title2">{{section.title}}</ion-text>
-              <br />
-              <div class="spacing"></div>
-              <ion-text class="font-body">{{section.caption}}</ion-text>
-            </ion-col>
-            <ion-col size="auto" class="ion-align-items-center">
-              <ion-img class="section-img" [src]="section.image"></ion-img>
-            </ion-col>
-          </ion-row>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-</div>
+  <ion-img *ngIf="myImage" [src]="myImage"></ion-img>
+<!-- </ion-content> -->
+<ion-button (click)="getCurrentPosition()" expand="block">
+  <ion-icon name="locate" slot="start"></ion-icon>
+  Get position
+</ion-button>
+
+<!-- present the geolocation information -->
+<ion-card *ngIf="position">
+  <ion-card-content>
+    <ion-item>
+      <ion-icon name="location" slot="start"></ion-icon>
+      Lat: {{ position.coords.latitude }}
+    </ion-item>
+    <ion-item>
+      <ion-icon name="location" slot="start"></ion-icon>
+      Lng: {{ position.coords.longitude }}
+    </ion-item>
+
+    <ion-button (click)="share()" expand="block" color="secondary">
+      <ion-icon name="share" slot="start"></ion-icon>
+      Share!
+    </ion-button>
+  </ion-card-content>
+</ion-card>

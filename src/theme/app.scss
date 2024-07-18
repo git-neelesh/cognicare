@@ -90,3 +90,6 @@ $font-path: "../assets/fonts";
   /* Support for IE. */
   font-feature-settings: "liga";
 }
+ ion-img::part(image) {
+   border-radius: 25%;
+ }

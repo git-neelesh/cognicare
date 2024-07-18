@@ -116,3 +116,8 @@ cr-on-boarding {
     margin-right:10px;
   }
 }
+
+ ion-img::part(image) {
+   border-radius: 25%;
+ }
+

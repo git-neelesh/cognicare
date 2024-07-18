@@ -1,5 +1,14 @@
+<ng-container *ngIf="splashScreen;else onBoarding">
+  <ion-img src="assets/splash.jpeg" class="bg-spline-" alt="Spline background for blur effect"></ion-img>
+
+  <div class="bottom-left" style="position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);">loading...</div>
+</ng-container>
+<ng-template #onBoarding>
 <div class="main-container" *ngIf="!authService.isLoggedIn()">
-  <ion-text class="courses-list-title font-largeTitle">Echoes</ion-text>
+  <ion-text class="courses-list-title font-largeTitle" style="font-size: 26px;">Welcome to Echoes</ion-text>
   <ion-img src="assets/course_rive/spline.svg" class="bg-spline" alt="Spline background for blur effect"></ion-img>
 
   <canvas riv="shapes" class="rive-bg" [width]="platform.width()" [height]="platform.height()" *ngIf="showRiveAsset">
@@ -9,7 +18,9 @@
   <div #container class="content-container">
     <div class="courses-list">
       <div class="course-container" *ngFor="let course of courses;let last = last" [style.--course-bg]="course.color">
-        <ion-img class="course-img" [src]="course.image"></ion-img>
+        <!-- <ion-img class="course-img" [src]="course.image"></ion-img> -->
+        <ion-img class="course-img" [src]="img" style="width: 60px;height: 60px;justify-content: end;border-radius:30%"></ion-img>
+
         <div class="container">
           <div class="image-container">
             <img src="./../../../../../assets/course_rive/avatars/avatar_1.svg" alt="Image Description">
@@ -19,13 +30,13 @@
             <p>{{course.description}}</p>
           </div>
         </div>
-      <ion-buttons class="startCoursebtn" (click)="startCoursePressed()" *ngIf="last">
-        <div class="contained shadow"></div>
-        <div class="contained btnContent">
-          <ion-icon class="arrow" name="arrow-forward-outline"></ion-icon>
-          <ion-text>Login</ion-text>
-        </div>
-      </ion-buttons>
+        <ion-buttons class="startCoursebtn" (click)="startCoursePressed()" *ngIf="last">
+          <div class="contained shadow"></div>
+          <div class="contained btnContent">
+            <ion-icon class="arrow" name="arrow-forward-outline"></ion-icon>
+            <ion-text>Login</ion-text>
+          </div>
+        </ion-buttons>
       </div>
     </div>
   </div>
@@ -38,3 +49,6 @@
     </ng-template>
   </ion-modal>
 </div>
+</ng-template>
+
+

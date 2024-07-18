@@ -26,8 +26,8 @@ div.content-container {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 40px;
-  padding-top: calc(var(--safe-area-inset-top) + 80px);
+  padding: 15px;
+  padding-top: calc(var(--safe-area-inset-top) + 45px);
   padding-bottom: calc(var(--ion-safe-area-bottom) + 40px);
   overflow-y: scroll;
 
@@ -302,4 +302,10 @@ ion-modal::part(backdrop) {
   font-size: 16px; /* Adjust font size as needed */
   color: #666; /* Adjust text color */
   line-height: 1.6; /* Adjust line height for readability */
+}
+ion-img::part(image) {
+  border-radius: 0% !important;
+}
+.course-img::part(image) {
+  border-radius: 25% !important;
 }

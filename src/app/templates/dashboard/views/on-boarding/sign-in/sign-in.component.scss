@@ -1,5 +1,7 @@
 .gradient-border {
-  margin: 16px;
+  // margin: 16px;
+  margin-top: 45%;
+  overflow: scroll;
   box-shadow: 0 3px 5px rgba(var(--cr-color-shadow-rgb), 0.3),
     0 30px 30px rgba(var(--cr-color-shadow-rgb), 0.3);
   border: 1px solid transparent;
