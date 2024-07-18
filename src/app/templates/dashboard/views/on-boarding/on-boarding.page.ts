@@ -45,7 +45,7 @@ export class OnBoardingPage implements OnInit {
   ) {
     setTimeout(() => {
       // this.splashScreen = true
-      // localStorage.setItem('lang', this.lang)
+      localStorage.setItem('lang', this.lang)
 
     }, 300);
     // this.textRange = randTextRange
