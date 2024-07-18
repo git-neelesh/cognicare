@@ -1,27 +1,5 @@
-<!-- <div class="content-container">
-  <div class="section-list">
-    <ion-grid class="section-grid">
-      <app-audio-player [sources]="[
-          { src: 'http://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
-          { src: 'http://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
-          { src: 'http://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' }
-        ]"> </app-audio-player>
-
-      <ion-row class="section-container" style="height: 75px; margin-top: 20px;" (click)="location.back()"
-        [style.background]="'#676a5d'">
-        <ion-col>
-          <ion-icon class="arrow" name="arrow-back-outline"></ion-icon>
-          <ion-text class="font-title2">Back</ion-text>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-</div> -->
-<!-- <div class="content-container">
-  <div class="section-list">
-    <ion-grid class="section-grid"> -->
-<ion-header>
-  <ion-toolbar color="primary">
+<ion-header [translucent]="true">
+  <ion-toolbar>
     <ion-title>
       Music Player
     </ion-title>
@@ -50,13 +28,19 @@
   </div>
 
 </ion-content>
-<ion-row class="section-container" style="height: 75px; margin-top: 20px;" (click)="location.back()"
+<!-- <ion-row class="section-container" style="height: 75px; margin-top: 20px;" (click)="location.back()"
   [style.background]="'#676a5d'">
   <ion-col>
     <ion-icon class="arrow" name="arrow-back-outline"></ion-icon>
     <ion-text class="font-title2">Back</ion-text>
   </ion-col>
-</ion-row>
+</ion-row> -->
+<cr-bottom-tab-bar
+  #bottomTabs
+  style="z-index: 2"
+  [selectedTab]="selectedTab"
+  (onTabChange)="selectedTab = $event"
+></cr-bottom-tab-bar>
 
 <!-- </ion-grid>
   </div>

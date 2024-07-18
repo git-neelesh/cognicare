@@ -16,9 +16,10 @@ import { GameViewModule } from './views/game-view/game-view.module';
 import { GalleryViewModule } from './views/gallery-view/gallery-view.module';
 import { ChatbotComponent } from 'src/app/chatbot/chatbot.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { BottomTabBarModule } from './navigation/bottom-tab-bar/bottom-tab-bar.module';
 
 let socketIoConfig: SocketIoConfig = {
-  url: 'http://192.168.1.100:3000'
+  url: 'http://127.0.0.1:3000'
 }; 
 
 @NgModule({
@@ -31,12 +32,12 @@ let socketIoConfig: SocketIoConfig = {
     ContentViewPageModule,
     GameViewModule,
     GalleryViewModule,
-    SocketIoModule.forRoot(socketIoConfig)
+    SocketIoModule.forRoot(socketIoConfig),
+    BottomTabBarModule
   ],
   declarations: [
     DashboardPage,
     MenuRowComponent,
-    BottomTabBarComponent,
     ChatbotComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]

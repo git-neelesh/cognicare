@@ -156,7 +156,7 @@ ion-modal::part(backdrop) {
   padding: 0px 20px;
 }
 
-.courses-list {
+.container-list .courses-list {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
@@ -167,7 +167,7 @@ ion-modal::part(backdrop) {
     display: none;
   }
 
-  .course-container {
+   .course-container {
     width: 316px;
     height: 727px;
     max-height: 788px;
@@ -229,7 +229,7 @@ ion-modal::part(backdrop) {
     }
   }
 
-  .course-container+.course-container {
+ .course-container+.course-container {
     margin-left: 20px;
   }
 }
@@ -296,12 +296,16 @@ ion-modal::part(backdrop) {
 .text-container h2 {
   font-size: 24px; /* Adjust font size as needed */
   margin-bottom: 10px; /* Adjust spacing between heading and paragraph */
+  font-style: italic;
+  font-family: cursive;
 }
 
 .text-container p {
   font-size: 16px; /* Adjust font size as needed */
   color: #666; /* Adjust text color */
   line-height: 1.6; /* Adjust line height for readability */
+  font-style: italic;
+  font-family: cursive;
 }
 ion-img::part(image) {
   border-radius: 0% !important;
