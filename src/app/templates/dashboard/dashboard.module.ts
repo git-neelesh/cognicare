@@ -16,7 +16,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { AddPatientModule } from './views/add-patient/add-patient.module';
 
 let socketIoConfig: SocketIoConfig = {
-  url: 'https://aab6-160-83-96-177.ngrok-free.app/socket.io/socket.io.js'
+  url: 'https://aab6-160-83-96-177.ngrok-free.app/'
 }; 
 
 
