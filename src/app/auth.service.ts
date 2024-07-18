@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   private loggedIn: boolean = false;
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   isLoggedIn(): boolean {
     return JSON.parse(JSON.stringify(localStorage.getItem('isLoggedIn'))) ?? false;
@@ -18,5 +19,11 @@ export class AuthService {
 
   logout(): void {
     this.loggedIn = false;
+    localStorage.clear();
+    this.route.navigate(['on-boarding']);
+  }
+
+  isPatient(): boolean {
+    return localStorage.getItem('type') === 'patient';
   }
 }
