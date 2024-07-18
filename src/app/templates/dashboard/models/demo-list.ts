@@ -6,20 +6,27 @@ export interface Demo {
   image: string;
   heading?: string;
   description?: string;
+  contact?: string,
+  email?: string,
+  id?: string
 }
 
 export const demoList: Demo[] = [
   {
-    title: 'Your family',
-    subtitle: 'You caring loved ones ',
+    id: 'helpline',
+    title: 'Dementia UK Helpline',
+    subtitle: `Get in touch with one of our dementia specialist Admiral Nurses.`,
     caption: '20 sections - 3 hours',
     color: '120, 80, 240',
     image: 'assets/course_rive/topic_1.svg',
     heading: 'Echoes',
-    description: 'connects multidisciplinary dementia care experts with professional care providers.'
+    description: 'connects multidisciplinary dementia care experts with professional care providers.',
+    contact: '0800 888 6678',
+    email: 'helpline@dementiauk.org'
   },
   {
-    title: 'Caregivers',
+    id: 'caregivers',
+    title: 'How can we help you?',
     subtitle:
       'They will assists you with daily tasks and activities',
     caption: '47 sections - 11 hours',
@@ -29,9 +36,10 @@ export const demoList: Demo[] = [
     description: 'The disease might hide the person underneath but there is still a person who needs your love and attention.'
   },
   {
-    title: 'Music you love',
+    id: 'community',
+    title: 'Know your community',
     subtitle:
-      'Rhythm and harmony find their way into the inward places of the Soul.',
+      'Our friendly and efficient team will be happy to help with any media enquiries.',
     caption: '21 sections - 4 hours',
     color: '0, 95, 231',
     image: 'assets/course_rive/topic_1.svg',

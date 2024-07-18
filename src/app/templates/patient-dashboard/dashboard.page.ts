@@ -212,4 +212,9 @@ export class DashboardPage implements OnInit {
 
 
   }
+
+  gotoGallery(){
+    console.log('in gallery');
+    this.route.navigate(['patient-dashboard/family']);
+  }
 }

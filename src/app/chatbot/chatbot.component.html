@@ -21,7 +21,8 @@
     <ion-footer>
       <ion-toolbar>
         <div class="toolbar-style"> 
-        <ion-input type="text" [(ngModel)]="userMessage" placeholder="Type your message..." (keypress)="onKeyPress($event)"></ion-input>
+        <ion-input type="text" [(ngModel)]="userMessage
+        " placeholder="Type your message..." (keypress)="onKeyPress($event)"></ion-input>
         <ion-button (click)="startSpeechToText()">
           <ion-icon *ngIf="isListening" style="color: red;" slot="end" name="mic"></ion-icon>
           <ion-icon *ngIf="!isListening" slot="end" name="mic"></ion-icon>
@@ -31,4 +32,6 @@
       </ion-toolbar>
     </ion-footer>
   </ion-content>
+
+ 
 <!-- </div> -->

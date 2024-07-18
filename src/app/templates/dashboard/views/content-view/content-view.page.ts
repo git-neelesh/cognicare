@@ -16,6 +16,7 @@ export class ContentViewPage implements OnInit {
   dateInfo = randSoonDate()
   copy1 = [];
   test = [];
+  chatBot = false;
   constructor(private route: Router) {
     console.log(randUser({length:10}), randHex({length:10}));
 
@@ -63,4 +64,13 @@ export class ContentViewPage implements OnInit {
   trackAvatarItems(_i: number, num: number) {
     return `avatar_${num}`;
   }
+
+  openFacebook() {
+    window.open('https://www.facebook.com/DementiaUK', '_blank');
+  }
+
+  openTwitter() {
+    window.open('https://twitter.com/DementiaUK', '_blank');
+  }
+
 }
