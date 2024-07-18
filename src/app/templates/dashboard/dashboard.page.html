@@ -1,6 +1,10 @@
 <ng-container *ngIf="isLoggedIn">
 <div class="screen-background"></div>
 
+
+
+<!-- <iframe width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/efb3046c-aa74-4d91-8e95-6f2312d31710"></iframe> -->
+
 <!-- Side Menu -->
 <cr-side-menu #sideMenu></cr-side-menu>
 
@@ -10,26 +14,22 @@
 ></cr-on-boarding> -->
 
 <ion-content #mainContent class="ion-padding">
-  <a href="_blank"  href="tel:{{'902182020816'}}" class="call-button">
-    <img src="assets/sos2.png" style="
-    width: 50px;
-    height: 46px;
-    position: absolute;
-    bottom: 134px;
-    right: 11px;
-    ">
-  </a>
+ 
   <div class="home-tab-container" [hidden]="selectedTab.id !== tabItems[0].id">
     <app-content-view></app-content-view>
+
+    
   </div>
 
   <div
     class="other-tabs"
     [ngStyle]="{ display: selectedTab.id === tabItems[0].id ? 'none' : 'flex' }"
   >
-    <ion-text class="font-title">
-      {{selectedTab.artboard.toLowerCase()}}
-    </ion-text>
+  
+    <div *ngIf="selectedTab.artboard === 'CHAT'">
+    <iframe  width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/efb3046c-aa74-4d91-8e95-6f2312d31710"></iframe>
+  </div>
+    
   </div>
 
 </ion-content>
@@ -64,3 +64,6 @@
   (onTabChange)="selectedTab = $event"
 ></cr-bottom-tab-bar>
 </ng-container>
+<!-- 
+<div *ngIf="selectedTab.artboard.toLowerCase() == 'search'">
+</div> -->
