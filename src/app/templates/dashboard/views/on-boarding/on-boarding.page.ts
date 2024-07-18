@@ -26,17 +26,22 @@ export class OnBoardingPage implements OnInit {
 
   buttonToggle = true;
   showRiveAsset = false;
-  textRange20 = randTextRange({ min: 10, max: 20, length: 10 })
-  textRange100 = randTextRange({ min: 10, max: 100, length: 10 })
+  textRange20 = randTextRange({ min: 10, max: 30, length: 10 })
+  textRange100 = randTextRange({ min: 10, max: 30, length: 10 })
   title = randSuperheroName()
   courses = demoList;
   randJobArea = randJobArea()
+  splashScreen: boolean = true
+  img = 'assets/logo.jpeg'
   constructor(
     public platform: Platform,
     private animationCtrl: AnimationController,
     private route: Router,
     public authService:AuthService
   ) {
+    setTimeout(() => {
+      this.splashScreen = false
+    }, 2000);
   // this.textRange = randTextRange
   // this.title = randSuperheroName
 if (this.authService.isLoggedIn()) {
@@ -83,7 +88,7 @@ if (this.authService.isLoggedIn()) {
 
     }
     setTimeout(() => {
-    location.reload()
+    //location.reload()
     }, 50);
   }
 

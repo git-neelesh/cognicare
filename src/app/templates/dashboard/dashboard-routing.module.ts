@@ -34,6 +34,10 @@ const routes: Routes = [
     loadChildren:() => import('./views/add-patient/add-patient.module').then(
       (m) => m.AddPatientModule
     )
+  },
+  {
+    path: 'track-user/:id',
+    loadChildren: () => import('./views/track-user/track-user.module').then( m => m.TrackUserPageModule)
   }
 ];
 

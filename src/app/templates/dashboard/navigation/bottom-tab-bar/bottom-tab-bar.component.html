@@ -10,7 +10,12 @@
           [ngClass]="selectedTab.id === tab.id ? 'expand' : ''"
         ></div>
       </div>
-      <canvas
+      <ion-icon name="{{tab.svg}}" style="width: 30px;
+    height: 30px;
+    color: #fff;"></ion-icon>
+      <!-- <ion-img class="section-img" *ngIf="tab.svg" [src]="tab.svg" style="width: 36px;height: 36px;justify-content: center;margin-left: 5px;"></ion-img> -->
+
+      <!-- <canvas
         [ngStyle]="{ opacity: selectedTab.id === tab.id ? 1 : 0.5 }"
         riv="icons"
         [artboard]="tab.artboard"
@@ -18,10 +23,11 @@
         height="36"
         *ngIf="tab.show"
       >
+
         <riv-state-machine [name]="tab.stateMachine" play>
           <riv-input name="active" [value]="tab.status"></riv-input>
         </riv-state-machine>
-      </canvas>
+      </canvas> -->
     </ion-col>
   </ion-row>
 </div>

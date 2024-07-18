@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Demo, courseSectionsList, demoList } from '../../models/demo-list';
 import { randColor, randHex, randUser,randProductDescription, randSoonDate  } from '@ngneat/falso';
 import { Router } from '@angular/router';
-
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Geolocation, Position } from '@capacitor/geolocation';
+import { Share } from '@capacitor/share';
 @Component({
   selector: 'app-content-view',
   templateUrl: './content-view.page.html',
@@ -10,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class ContentViewPage implements OnInit {
   courses = demoList;
+  myImage = null;
+  position: Position = null;
   courseSections = [{
     title: 'Games',
     caption: '4 Games',
@@ -37,7 +41,31 @@ export class ContentViewPage implements OnInit {
   constructor(private route: Router) {
     console.log(randUser({length:10}), randHex({length:10}))
   }
+async takePicture() {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: true,
+      resultType: CameraResultType.Uri,
+      source: CameraSource.Camera
+    });
 
+    this.myImage = image.webPath;
+  }
+  async getCurrentPosition() {
+    const coordinates = await Geolocation.getCurrentPosition();
+
+    this.position = coordinates;
+  }
+
+  async share() {
+    await Share.share({
+      title: 'Come and find me',
+      text: `Here's my current location:
+        ${this.position.coords.latitude},
+        ${this.position.coords.longitude}`,
+      url: 'http://ionicacademy.com/'
+    });
+  }
   ngOnInit() {}
 
   trackCourses(i: number, course: any) {

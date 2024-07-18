@@ -74,7 +74,7 @@ if (this.authService.isLoggedIn()) {
 
     }
     setTimeout(() => {
-    location.reload()
+    //location.reload()
     }, 50);
   }
 
