@@ -1,11 +1,40 @@
-<ion-header translucent>
-  <ion-toolbar  color="primary">
-    <ion-buttons slot="start">
-    <ion-back-button default-href="/dashboard"></ion-back-button>
-    </ion-buttons>
-    <ion-title> Track - {{ patient.firstName }} {{ patient.lastName}} </ion-title>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ patient.firstName }} {{ patient.lastName}}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
-  <div class="map" #map></div>
+
+
+<ion-content>
+  <ion-card class='custom-card' [ngStyle]="{'background-color': backgroundColor}">
+    <ion-card-header class="card-header">
+      <ion-card-title>{{ patient.username }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="card-content-container">
+        <div class="image">
+          <img [src]="patient.img">
+        </div>
+        <div class="details">
+          <p>Phone: {{ patient.phone }}</p>
+          <p>Email: {{ patient.email }}</p>
+          <p>Address: {{ patient.address.street }}, {{ patient.address.city }}, {{ patient.address.country }}, {{ patient.address.zipCode }}</p>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Map section -->
+  <ion-button expand="block" style="padding-left: 8px; padding-right: 8px;" class="location">
+    <ion-icon slot="start" name="Location"></ion-icon>
+    Track Live Location
+  </ion-button>
 </ion-content>
+
+<ion-row class="section-container" style="height: 75px; margin: 20px;" (click)="backToDashboard()"
+  [style.background]="'#676a5d'">
+  <ion-col>
+    <ion-icon class="arrow" name="arrow-back-outline"></ion-icon>
+    <ion-text class="font-title2">Back to Dashboard</ion-text>
+  </ion-col>
+</ion-row>
