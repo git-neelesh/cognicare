@@ -20,7 +20,6 @@ export class SignInComponent implements OnInit {
   lang: string = 'English'
 
   constructor(private route: Router) {
-  this.textRange = randTextRange({ min: 10, max: 20, length: 10 })
   }
 
   ngOnInit() {}

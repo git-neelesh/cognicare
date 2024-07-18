@@ -22,7 +22,7 @@
       </ion-text>
       <div class="spacer"></div>
       <ion-row class="avatar-container">
-        <ion-img
+      <ion-img
           *ngFor="let number of [1, 2, 3] | shuffleArray; let i = index; trackBy: trackAvatarItems"
           [style.transform]="'translateX(calc(' + i + ' * -20px))'"
           src="assets/course_rive/avatars/avatar_{{number}}.svg"
@@ -31,7 +31,16 @@
     </div>
   </div>
 
-  <ion-text class="recent-title font-title3">Recent</ion-text>
+  <ion-row>
+    <ion-text class="recent-title font-title3">Recent</ion-text>
+    <ion-icon style="padding-top: 8px;" class="recent-title" name="search-outline">  </ion-icon> 
+      <ion-input style="    width: 30%;
+      padding-top: 0 !important;
+      min-height: 31px !important;" type="text" placeholder="Search" (keydown)="onKeyPress($event)"></ion-input> 
+  
+      
+    </ion-row>
+
   <!-- Recent course Section -->
   <div class="section-list">
     <ion-grid class="section-grid">

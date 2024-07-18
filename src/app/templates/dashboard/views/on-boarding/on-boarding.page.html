@@ -28,28 +28,31 @@
   </canvas>
 
   <!-- Main Content -->
-  <div #container class="content-container">
-    <div class="courses-list">
-      <div class="course-container" *ngFor="let course of courses;let last = last" [style.--course-bg]="course.color">
-        <!-- <ion-img class="course-img" [src]="course.image"></ion-img> -->
-        <ion-img class="course-img" [src]="img" style="width: 60px;height: 60px;justify-content: end;border-radius:30%"></ion-img>
-
-        <div class="container">
-          <div class="image-container">
-            <img src="./../../../../../assets/course_rive/avatars/avatar_1.svg" alt="Image Description">
+  <div class="container-list">
+    <div #container class="content-container">
+      <div class="courses-list">
+        <div class="course-container" *ngFor="let course of courses;let last = last" [style.--course-bg]="course.color">
+          <!-- <ion-img class="course-img" [src]="course.image"></ion-img> -->
+          <ion-img class="course-img" [src]="img"
+            style="width: 60px;height: 60px;justify-content: end;border-radius:30%"></ion-img>
+  
+          <div class="container">
+            <div class="image-container">
+              <img src="./../../../../../assets/course_rive/avatars/avatar_1.svg" alt="Image Description">
+            </div>
+            <div class="text-container">
+              <h2>{{course.heading}}</h2>
+              <p>{{course.description}}</p>
+            </div>
           </div>
-          <div class="text-container">
-            <h2>{{course.heading}}</h2>
-            <p>{{course.description}}</p>
-          </div>
+          <ion-buttons class="startCoursebtn" (click)="startCoursePressed()" *ngIf="last">
+            <div class="contained shadow"></div>
+            <div class="contained btnContent">
+              <ion-icon class="arrow" name="arrow-forward-outline"></ion-icon>
+              <ion-text>Login</ion-text>
+            </div>
+          </ion-buttons>
         </div>
-        <ion-buttons class="startCoursebtn" (click)="startCoursePressed()" *ngIf="last">
-          <div class="contained shadow"></div>
-          <div class="contained btnContent">
-            <ion-icon class="arrow" name="arrow-forward-outline"></ion-icon>
-            <ion-text>Login</ion-text>
-          </div>
-        </ion-buttons>
       </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
-import {  ModalController } from '@ionic/angular';
-import { tabItemsList } from './models/tabs';
+import { ModalController } from '@ionic/angular';
+import { BottomTabItem, tabItemsList } from './models/tabs';
 import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
 import { ChatbotComponent } from 'src/app/chatbot/chatbot.component';
@@ -23,7 +23,7 @@ export class DashboardPage implements OnInit {
   @ViewChild('onBoarding', { read: ElementRef }) onBoardingRef?: ElementRef;
   @ViewChild('tabWhiteBg', { read: ElementRef }) tabWhiteBgRef?: ElementRef;
 
-  selectedTab = tabItemsList[0];
+  selectedTab: any = tabItemsList[0];
   isMenuOpen = true;
   tabItems = tabItemsList;
   showOnBoarding = false;
@@ -32,10 +32,10 @@ export class DashboardPage implements OnInit {
   isLoggedIn: boolean = false
   img = 'assets/logo.jpeg'
   constructor(
-    private authService:AuthService,
+    private authService: AuthService,
     private socket: Socket,
-  private route: Router,
-  private modalController: ModalController) {}
+    private route: Router,
+    private modalController: ModalController) { }
 
   ngOnInit(): void {
     this.socket.connect();
@@ -49,7 +49,7 @@ export class DashboardPage implements OnInit {
     } else {
       this.route.navigateByUrl('/on-boarding')
     }
-     this.sendGeoLocation();
+    this.sendGeoLocation();
   }
 
   async openModal() {
@@ -57,7 +57,7 @@ export class DashboardPage implements OnInit {
       component: ChatbotComponent,
       cssClass: 'my-custom-class' // Optional CSS class for custom styling
     });
-    modal.onDidDismiss().then(data=>{
+    modal.onDidDismiss().then(data => {
       this.selectedTab = data.data.data;
     })
     return await modal.present();
@@ -68,15 +68,15 @@ export class DashboardPage implements OnInit {
 
     // calculated space based on screen scale (0.92) + 20px to show home behind modal
     //const transformBottom = 'calc(((100vh - (100vh * 0.92)) / 2) + 20px)';
-  /*   const onBoardingAnim = this.animationCtrl
-      .create()
-      .addElement(this.onBoardingRef?.nativeElement)
-      .fromTo(
-        'transform',
-        // Here 40px is extra shadow area to avoid it being shown when modal is closed
-        `translateY(calc(-1 * (100vh + ${transformBottom} + 40px)))`,
-        `translateY(calc(-1 * ${transformBottom}))`
-      ); */
+    /*   const onBoardingAnim = this.animationCtrl
+        .create()
+        .addElement(this.onBoardingRef?.nativeElement)
+        .fromTo(
+          'transform',
+          // Here 40px is extra shadow area to avoid it being shown when modal is closed
+          `translateY(calc(-1 * (100vh + ${transformBottom} + 40px)))`,
+          `translateY(calc(-1 * ${transformBottom}))`
+        ); */
 
     /* const contentViewAnim = this.animationCtrl
       .create()
@@ -104,23 +104,23 @@ export class DashboardPage implements OnInit {
         tabWhiteBgAnim,
       ]);
  */
-   /*  if (this.showOnBoarding) {
-      allAnim.play();
-    } else {
-      allAnim.direction('reverse').play();
-    } */
+    /*  if (this.showOnBoarding) {
+       allAnim.play();
+     } else {
+       allAnim.direction('reverse').play();
+     } */
   }
 
-  tabChange(event: any) {
+  tabChange(event: any) {console.log(event)
     if (event.artboard === 'CHAT') {
-    this.openModal();
+      this.openModal();
     }
   }
 
   onMenuToggle() {
     StatusBar.setStyle({
       style: this.isMenuOpen ? Style.Dark : Style.Light,
-    }).catch(() => {});
+    }).catch(() => { });
 
     /* const contentViewAnim = this.animationCtrl
       .create()
@@ -187,9 +187,9 @@ export class DashboardPage implements OnInit {
     try {
 
       const permissionStatus = await Geolocation.checkPermissions();
-      if(permissionStatus?.location !== 'granted') {
+      if (permissionStatus?.location !== 'granted') {
         const requestStatus = await Geolocation.requestPermissions();
-        if(requestStatus.location !== 'granted') {
+        if (requestStatus.location !== 'granted') {
           console.log('Not granted');
           return;
         }
@@ -199,14 +199,14 @@ export class DashboardPage implements OnInit {
           timeout: 1000,
           enableHighAccuracy: true
         }
-        await Geolocation.watchPosition(options, (value)=> {
+        await Geolocation.watchPosition(options, (value) => {
           console.log(value);
           this.socket.emit('get-geolocation', value);
         });
 
       }
 
-    } catch(exception) {
+    } catch (exception) {
       console.log("exception")
     }
 

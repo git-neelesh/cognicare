@@ -16,7 +16,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { AddPatientModule } from './views/add-patient/add-patient.module';
 
 let socketIoConfig: SocketIoConfig = {
-  url: 'http://192.168.1.100:3000'
+  url: 'http://127.0.0.1:3000'
 }; 
 
 

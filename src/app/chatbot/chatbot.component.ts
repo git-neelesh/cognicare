@@ -62,6 +62,7 @@ export class ChatbotComponent implements OnInit{
   async startSpeechToText() {
     // Logic to start speech-to-text functionality
     console.log('Starting speech-to-text...');
+    this.isListening = true;
 
     if ('webkitSpeechRecognition' in window) {
       const vSearch = new webkitSpeechRecognition();
@@ -74,6 +75,7 @@ export class ChatbotComponent implements OnInit{
         this.results = e.results[0][0].transcript;
         this.getResult();
         vSearch.stop();
+        this.isListening = false
       };
     } else {
       alert('Your browser does not support voice recognition!');
@@ -84,7 +86,8 @@ export class ChatbotComponent implements OnInit{
 
   getResult(){
     console.log(this.results);
-    this.messages.push({from: 'user', text : this.results});
+    this.userMessage = this.results;
+    // this.messages.push({from: 'user', text : this.results});
   }
 
 
