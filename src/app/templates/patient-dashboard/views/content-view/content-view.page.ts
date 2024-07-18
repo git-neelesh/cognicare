@@ -44,11 +44,6 @@ export class ContentViewPage implements OnInit {
 
   }
 
-
-  onKeyPress(event){
-    console.log(event);
-  }
-
   trackCourses(i: number, course: any) {
     return `${course.title}_${i}`;
   }
