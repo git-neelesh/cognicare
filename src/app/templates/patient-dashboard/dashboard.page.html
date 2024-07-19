@@ -11,17 +11,13 @@
 
 <ion-content #mainContent class="ion-padding">
   <a href="_blank"  href="tel:{{'902182020816'}}" class="call-button">
-    <!-- <ion-button shape="round">
-      <label>SOS</label>
-      <ion-icon name="call-outline"></ion-icon>
-  </ion-button> -->
-  <ion-img src="assets/sos2.png" style="
+    <img src="assets/sos2.png" style="
       width: 50px;
   height: 46px;
-  top: 1%;
+  right: 1%;
   position: absolute;
-  right: 0;
-    "></ion-img>
+  top: 1%;
+    ">
   </a>
   <div class="home-tab-container" [hidden]="selectedTab.id !== tabItems[0].id">
     <app-content-view></app-content-view>
