@@ -49,15 +49,15 @@ export class ContentViewPage implements OnInit {
 this.langService.makeRequest([{
       "text": "Patient Dashboard"
     }, {
-      "text": "Your family"
+      "text": "My family"
     }, {
-      "text": "You caring loved ones"
+      "text": "My loved ones"
     }, {
       "text": "Caregivers"
     },{
       "text": "They will assists you with daily tasks and activities"
     },{
-      "text": "Music you love"
+      "text": "Music I love"
     },{
       "text": "Rhythm and harmony find their way into the inward places of the Soul."
     }], localStorage.getItem('lang'), this.translateData).then((data: any) => {

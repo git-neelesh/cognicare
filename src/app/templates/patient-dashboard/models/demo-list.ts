@@ -10,7 +10,7 @@ export interface Demo {
 
 export const demoList: Demo[] = [
   {
-    title: 'Your family',
+    title: 'My family',
     subtitle: 'You caring loved ones',
     caption: '20 sections - 3 hours',
     color: '120, 80, 240',
