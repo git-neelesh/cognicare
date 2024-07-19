@@ -41,8 +41,8 @@ data: any = null
     setTimeout(() => (this.showRiveMenuBtn = true), 1000);
     console.log(this.authService.isLoggedIn())
     if (this.authService.isLoggedIn()) {
-    this.lang.convertLang('hello how are you', localStorage.getItem('lang'), this.data)
-    console.log(this.data)
+    // this.lang.convertLang('hello how are you', localStorage.getItem('lang'), this.data)
+    // console.log(this.data)
     }
 
 
