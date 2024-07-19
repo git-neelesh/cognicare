@@ -45,6 +45,16 @@ cr-on-boarding {
   z-index: 3;
 }
 
+:host .chat-box {
+  .chat-wrapper.expanded {
+    transform: translate(0) scale(0.92);
+  }
+} 
+
+.chat-bubble{
+  --df-messenger-chat-bubble-size: 11px;
+}
+
 .tabs-white-underlay {
   height: 150px;
   width: 100vw;
