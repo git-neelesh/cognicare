@@ -36,6 +36,8 @@ export class UserDetailsPage implements OnInit, AfterViewInit {
   data: any;
   weakestGame= '';
   reasoning = '';
+  averageSleep: any;
+  sleepDiagnosis= ''; 
 
   public chartType: ChartType = 'bar';
   public barChartData: any[] = [];
@@ -73,6 +75,8 @@ export class UserDetailsPage implements OnInit, AfterViewInit {
     
   this.getData().subscribe(data => {
     this.data = data[Math.floor(Math.random() * 10) + 1];
+
+    //Game Analysis
     this.chartLabels = this.data.game_details.map(game => game.name);
     const successData = this.data.game_details.map(game => game.score.success);
     const failureData = this.data.game_details.map(game => game.score.failure);
@@ -82,8 +86,28 @@ export class UserDetailsPage implements OnInit, AfterViewInit {
     ];
     this.chartType = 'bar';
     this.analyzeGameDetails(this.data.game_details);
+
+    //sleep diagnosis
+    const sleepData = this.data.sensor_data.sleep;
+    this.averageSleep = this.calculateAverageSleep(sleepData);
+    this.sleepDiagnosis = this.diagnoseBasedOnSleep(this.averageSleep);
   });
 
+  }
+
+  calculateAverageSleep(sleepData: []): number {
+    const totalSleep = sleepData.reduce((acc: number, cur: number) => acc + cur, 0);
+    return totalSleep / sleepData.length;
+  }
+
+  diagnoseBasedOnSleep(averageSleep: number): string {
+    if (averageSleep < 6) {
+      return 'Poor sleep';
+    } else if (averageSleep >= 6 && averageSleep <= 7) {
+      return 'Fair sleep';
+    } else {
+      return 'Good sleep';
+    }
   }
 
   analyzeGameDetails(gameDetails: any[]) {
