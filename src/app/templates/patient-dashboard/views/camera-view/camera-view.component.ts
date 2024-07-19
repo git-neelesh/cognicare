@@ -14,7 +14,9 @@ import { Filesystem, Directory } from '@capacitor/filesystem';
 })
 export class CameraViewComponent implements OnInit {
   myImage = null;
-imageUrl: string;
+  isPictureTaken = false;
+  imageUrl: string;
+  backgroundColor = '#7676ab';
   filePath: string;
   name: string = ''
   ngOnInit() {
@@ -36,6 +38,7 @@ imageUrl: string;
     console.log('Image File Path:', this.filePath);
     // this.identifyPerson(this.myImage);
     this.faceID(savedImageFile)
+    this.isPictureTaken = true;
 
   }
  async savePicture(photo: Photo) {

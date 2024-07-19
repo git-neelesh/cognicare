@@ -1,18 +1,36 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Camera view
+      Scan to identify
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="takePicture()" expand="block">
+  <ion-button (click)="takePicture()" style="padding: 8px 8px" expand="block">
     <ion-icon name="camera" slot="start"></ion-icon>
     Capture image
   </ion-button>
-  <ion-img *ngIf="myImage" [src]="myImage"></ion-img>
+  <ion-card class='custom-card' *ngIf="isPictureTaken" [ngStyle]="{'background-color': backgroundColor}">
 
-{{name}}
+    <ion-card-content>
+      <div class="card-content-container">
+        <div class="image">
+          <ion-img *ngIf="myImage" [src]="myImage"></ion-img>
+        </div>
+        <div>
+          <ion-card-header class="card-header">
+            <ion-card-title>{{name}}</ion-card-title>
+          </ion-card-header>
+        </div>
+        <div class="details" *ngIf=name>
+          <p> That's your grandson!!</p>
+          <p> He works at XYZ organization as a developer. </p>
+          <p> You have beautiful memories with him from your last Konkan Trip. </p>
+        </div>
+      </div>
+    </ion-card-content>
 
+
+  </ion-card>
 </ion-content>
