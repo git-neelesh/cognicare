@@ -3,7 +3,6 @@ ion-content {
   --padding-bottom: calc(var(--ion-safe-area-bottom) + 25px);
   position: absolute;
   z-index: 1;
-  border-radius: 30px;
   overflow: hidden;
 }
 // Hide scrollbar for Chrome, Safari and Opera

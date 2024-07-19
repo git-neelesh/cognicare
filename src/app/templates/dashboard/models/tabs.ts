@@ -29,7 +29,7 @@ export const tabItemsList: BottomTabItem[] = [
   {
     id: 'tab_bell',
     stateMachine: 'BELL_Interactivity',
-    artboard: 'BELL',
+    artboard: 'Notifications will be here',
     status: false,
     show: false,
     svg:'notifications-outline'
