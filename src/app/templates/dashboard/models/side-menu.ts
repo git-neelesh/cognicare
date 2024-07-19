@@ -18,13 +18,6 @@ export const menuItemsList: MenuItem[] = [
     svg:'assets/logo.jpeg'
   },
   {
-    id: 'Search',
-    stateMachine: 'SEARCH_Interactivity',
-    artboard: 'SEARCH',
-    status: false,
-    show: false,
-  },
-  {
     id: 'Add Patient',
     stateMachine: 'STAR_Interactivity',
     artboard: 'LIKE/STAR',
@@ -41,13 +34,6 @@ export const menuItemsList: MenuItem[] = [
   },
 ];
 export const menuItems2List: MenuItem[] = [
-  {
-    id: 'History',
-    stateMachine: 'TIMER_Interactivity',
-    artboard: 'TIMER',
-    status: false,
-    show: false,
-  },
   {
     id: 'Notification',
     stateMachine: 'BELL_Interactivity',
