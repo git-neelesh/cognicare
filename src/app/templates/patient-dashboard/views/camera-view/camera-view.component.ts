@@ -8,6 +8,7 @@ import createFaceClient, {
 } from '@azure-rest/ai-vision-face';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { tabItemsList } from '../../models/tabs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-camera-view',
@@ -22,6 +23,9 @@ export class CameraViewComponent implements OnInit {
   filePath: string;
   name: string = '';
   selectedTab = tabItemsList[3];
+
+  constructor(public location: Location){}
+
   ngOnInit() {
    }
 
