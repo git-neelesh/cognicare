@@ -12,7 +12,7 @@ import { LangService } from 'src/app/lang.service';
 export class ContentViewPage implements OnInit {
   courses = demoList;
   courseSections = [{
-    title: 'FaceScan',
+    title: 'Face Scan',
     caption: 'Do you know them?',
     color: '#005FE7',
     image: 'assets/course_rive/image-gallery.png',
