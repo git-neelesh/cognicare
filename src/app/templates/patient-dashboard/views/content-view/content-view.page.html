@@ -7,7 +7,7 @@
       *ngFor="let course of courses; trackBy: trackCourses"
       [style.--course-bg]="course.color" (click)="goToRoutes(course)"
     >
-      <ion-img class="course-img" [src]="course.image"></ion-img>
+      <!-- <ion-img class="course-img" [src]="course.image"></ion-img> -->
 
       <ion-text class="course-title font-title2">{{course.title}}</ion-text>
       <ion-text class="course-subtitle font-subtitle">
