@@ -7,6 +7,8 @@ import createFaceClient, {
   isUnexpected,
 } from '@azure-rest/ai-vision-face';
 import { Filesystem, Directory } from '@capacitor/filesystem';
+import { tabItemsList } from '../../models/tabs';
+
 @Component({
   selector: 'app-camera-view',
   templateUrl: './camera-view.component.html',
@@ -18,7 +20,8 @@ export class CameraViewComponent implements OnInit {
   imageUrl: string;
   backgroundColor = '#7676ab';
   filePath: string;
-  name: string = ''
+  name: string = '';
+  selectedTab = tabItemsList[3];
   ngOnInit() {
    }
 

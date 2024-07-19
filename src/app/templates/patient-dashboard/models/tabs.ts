@@ -35,17 +35,17 @@ export const tabItemsList: BottomTabItem[] = [
     status: false,
     show: false,
     svg:'musical-notes-outline',
-    route: 'patient-dashboard/music'
+    route: 'patient-dashboard/music'  
 
   },
   {
-    id: 'tab_bell',
-    stateMachine: 'BELL_Interactivity',
-    artboard: 'BELL',
+    id: 'tab_recognize',
+    stateMachine: 'CAMERA_Interactivity',
+    artboard: 'CAMERA',
     status: false,
     show: false,
-    svg:'notifications-outline',
-    route: 'patient-dashboard/games'
+    svg:'camera-outline',
+    route: 'patient-dashboard/camera'
   },
   {
     id: 'tab_user',
