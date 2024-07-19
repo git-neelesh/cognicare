@@ -44,7 +44,7 @@
           </ion-row>
           <ng-template #showSelectedGame>
             <div>
-              <div class="gameArea" *ngIf="activeGID === 'G_1'"></div>
+              <div class="gameArea" [ngStyle]="{'background-color': backgroundColor}" *ngIf="activeGID === 'G_1'"></div>
               <div class="hangman" *ngIf="activeGID === 'G_2'"></div>
               <app-symbol-match-game *ngIf="activeGID === 'G_3'"></app-symbol-match-game>
             </div>

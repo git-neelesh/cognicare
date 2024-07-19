@@ -14,6 +14,8 @@ export class GameViewComponent implements OnInit {
   constructor(public location: Location, public platform: Platform, private animationCtrl: AnimationController) { }
 
   selectedTab = tabItemsList[3];
+  colors = ['#7676ab', '#059ab4', '#f03d81', '#064167', '#7b8b49', '#0aade4', '#008d99', '#925fb1', '#445269']
+  backgroundColor = '#7676ab';
   gameSections: any = [
     {
       title: 'Guess the word',
