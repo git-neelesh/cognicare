@@ -3,7 +3,6 @@ ion-content {
   --padding-bottom: calc(var(--ion-safe-area-bottom) + 60px);
   position: absolute;
   z-index: 1;
-  border-radius: 30px;
   overflow: hidden;
 }
 // Hide scrollbar for Chrome, Safari and Opera
@@ -65,7 +64,7 @@ cr-on-boarding {
   border-radius: 18px;
   background: inherit;
   position: fixed;
-  top: calc(var(--safe-area-inset-top) + 20px);
+  top: calc(var(--safe-area-inset-top) + 10px);
   right: 16px;
   display: flex;
   align-items: center;
@@ -123,4 +122,19 @@ cr-on-boarding {
   display: block;
   margin: 0 auto;
   width: 60px;
+}
+
+df-messenger {
+  z-index: 999;
+  position: fixed;
+  --df-messenger-font-color: #000;
+  --df-messenger-font-family: Google Sans;
+  --df-messenger-chat-background: #f3f6fc;
+  --df-messenger-message-user-background: #d3e3fd;
+  --df-messenger-message-bot-background: #fff;
+  bottom: 0px;
+  right: 40px;
+}
+.chat-wrapper {
+  height: 90%;
 }
