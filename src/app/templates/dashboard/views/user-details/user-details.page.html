@@ -1,5 +1,10 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="location.back()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>{{ patient.firstName }} {{ patient.lastName}}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -40,13 +45,3 @@
   </ion-card>
 
 </ion-content>
-
-
-
-<ion-row class="section-container" style="height: 75px; margin: 20px;" (click)="backToDashboard()"
-  [style.background]="'#676a5d'">
-  <ion-col>
-    <ion-icon class="arrow" name="arrow-back-outline"></ion-icon>
-    <ion-text class="font-title2">Back to Dashboard</ion-text>
-  </ion-col>
-</ion-row>

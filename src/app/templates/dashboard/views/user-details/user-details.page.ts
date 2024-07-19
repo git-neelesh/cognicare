@@ -13,6 +13,7 @@ import { Geolocation } from '@capacitor/geolocation';
 import { HttpClient } from '@angular/common/http';
 import { ChartData, ChartOptions, ChartType, Color } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-user-details',
@@ -59,7 +60,8 @@ export class UserDetailsPage implements OnInit, AfterViewInit {
     private route: Router,
     private mapService: MapService,
     private renderer: Renderer2,
-    private http: HttpClient
+    private http: HttpClient,
+    public location: Location
   ) {
     const navigation = this.route.getCurrentNavigation();
     if (navigation?.extras?.state) {
