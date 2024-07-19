@@ -22,7 +22,7 @@ export class CameraViewComponent implements OnInit {
   backgroundColor = '#7676ab';
   filePath: string;
   name: string = '';
-  selectedTab = tabItemsList[3];
+  selectedTab = tabItemsList[2];
 
   constructor(public location: Location){}
 

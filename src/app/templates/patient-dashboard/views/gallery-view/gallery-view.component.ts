@@ -11,7 +11,7 @@ import { tabItemsList } from '../../models/tabs';
   styleUrls: ['./gallery-view.component.scss'],
 })
 export class GalleryViewComponent  implements OnInit {
-  selectedTab = tabItemsList[4];
+  selectedTab = tabItemsList[3];
 
   constructor(public location: Location, public platform: Platform, private animationCtrl: AnimationController) { }
 

@@ -20,15 +20,6 @@ export const tabItemsList: BottomTabItem[] = [
     route: 'patient-dashboard'
   },
   {
-    id: 'tab_chat',
-    stateMachine: 'chat_Interactivity',
-    artboard: 'CHAT',
-    status: false,
-    show: false,
-    svg:'chatbubbles-outline'
-
-  },
-  {
     id: 'tab_music',
     stateMachine: 'MUSIC_Interactivity',
     artboard: 'MUSIC',
@@ -53,7 +44,7 @@ export const tabItemsList: BottomTabItem[] = [
     artboard: 'USER',
     status: false,
     show: false,
-    svg:'person-outline',
+    svg:'people-outline',
     route: 'patient-dashboard/family'
   },
   {

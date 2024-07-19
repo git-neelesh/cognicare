@@ -12,7 +12,7 @@ import { AnimationController, Platform } from '@ionic/angular';
 export class MusicViewComponent  implements OnInit {
   audio: HTMLAudioElement;
   isPlaying = false;
-  selectedTab = tabItemsList[2];
+  selectedTab = tabItemsList[1];
 
 
   songs = [
