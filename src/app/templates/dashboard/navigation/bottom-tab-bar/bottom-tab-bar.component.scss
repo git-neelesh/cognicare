@@ -1,3 +1,4 @@
+@import "https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css";
 .gradient-border {
   max-width: 768px;
   position: fixed;
@@ -73,4 +74,10 @@
   100% {
     width: 20px;
   }
+}
+
+.chat-box {
+  position: absolute;
+  bottom: 0px;
+  right: 10%;
 }

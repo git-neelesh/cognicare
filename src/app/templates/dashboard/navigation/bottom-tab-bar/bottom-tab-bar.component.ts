@@ -12,7 +12,7 @@ export class BottomTabBarComponent implements OnInit {
   @Input() selectedTab: BottomTabItem = this.tabItems[0];
   @Output() onTabChange = new EventEmitter<BottomTabItem>();
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
     // Temporary solution to fix the rive asset loading issue causing "Binding Error",
@@ -23,7 +23,7 @@ export class BottomTabBarComponent implements OnInit {
   }
 
   onIconPress(tab: BottomTabItem) {
-    if(tab.id === 'tab_logout') {
+    if (tab.id === 'tab_logout') {
       this.auth.logout();
       return
     }
@@ -35,7 +35,6 @@ export class BottomTabBarComponent implements OnInit {
       this.onTabChange.emit(tab);
     }
   }
-
   trackTabItems(_i: number, tab: BottomTabItem) {
     return tab.id;
   }
